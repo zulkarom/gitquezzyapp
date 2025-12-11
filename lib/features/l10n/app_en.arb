@@ -1,0 +1,26 @@
+{
+    "subject": "Subject",
+    "@subject": {
+        "description": "subject"
+    },
+    "seeAll": "See All",
+    "language": "Language",
+    "settings": "Settings",
+    "displaySetting": "Display Settings",
+    "theme": "Theme",
+    "fontSize": "Font Size",
+    "math": "Mathematic",
+    "science": "Science",
+    "listTopic": "List of Topics",
+    "noResult": "No results found",
+    "question": "Question",
+    "listSubject": "{subjectName}",
+    "@listSubject": {
+        "description": "Name for every subject",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    }
+}

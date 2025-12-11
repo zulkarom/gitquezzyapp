@@ -1,0 +1,15 @@
+{
+    "subject": "Subjek",
+    "seeAll": "Lihat Semua",
+    "language": "Bahasa",
+    "settings": "Tetapan",
+    "displaySetting": "Tetapan Paparan",
+    "theme": "Tema",
+    "fontSize": "Saiz Huruf",
+    "math": "Matematik",
+    "science": "Sains",
+    "listSubject": "{subjectName}",
+    "listTopic": "Senarai Topik",
+    "noResult": "Tiada hasil ditemui",
+    "question": "Soalan"
+}

@@ -1,0 +1,528 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:flutter_ta_plus/core/constant/app_dimensions.dart';
+import 'package:flutter_ta_plus/core/constant/colors.dart';
+import 'package:flutter_ta_plus/features/home/bloc/home_bloc.dart';
+import 'package:flutter_ta_plus/features/more/bloc/more_bloc.dart';
+import 'package:flutter_ta_plus/features/profile/bloc/profile_bloc.dart';
+import 'package:flutter_ta_plus/features/topic/screens/topic_screen.dart';
+import 'package:flutter_ta_plus/features/more/controllers/more_controller.dart';
+import '../../../core/bloc/language/language_bloc.dart';
+import '../../../core/constant/constants.dart';
+import '../../../core/models/entities.dart';
+import '../../../global.dart';
+import '../../application/bloc/app_bloc.dart';
+import '../../quiz_room/screens/invitation_list_screen.dart';
+import '../bloc/home_state.dart';
+import '../controller/home_controller.dart';
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => HomeBloc(),
+      child: const _HomeScaffold(),
+    );
+  }
+}
+
+class _HomeScaffold extends StatefulWidget {
+  const _HomeScaffold();
+
+  @override
+  _HomeScaffoldState createState() => _HomeScaffoldState();
+}
+
+class _HomeScaffoldState extends State<_HomeScaffold> {
+  // final IO.Socket _socket = IO.io('http://192.168.0.44:8000/',
+  //     IO.OptionBuilder().setTransports(['websocket']).build());
+  late final TextEditingController searchController;
+  late HomeController _homeController;
+
+  // _connectSocket() {
+  //   _socket.onConnect((data) => print('Connection established'));
+  //   _socket.onConnectError((data) => print('Connect Error: $data'));
+  //   _socket.onDisconnect((data) => print('Socket.IO server disconnected'));
+  // }
+
+  // @override
+  // void initState() {
+  //   searchController = TextEditingController();
+  //   // _connectSocket();
+  //   // context.read<HomeBloc>().add(InitSocket());
+  //   super.initState();
+  // }
+
+  @override
+  void didChangeDependencies() {
+    searchController = TextEditingController();
+    _homeController = HomeController(context: context);
+    _homeController.init();
+    MoreController(context: context).init();
+    context.read<ProfileBloc>().add(TriggerInitialStudentItemEvent(
+        Global.storageService.getStudentProfile()));
+
+    super.didChangeDependencies();
+  }
+
+  List imgList = [
+    'Bahasa Melayu',
+    'English',
+    'Matematik',
+    'Sains',
+  ];
+
+  List<Icon> catIcons = const [
+    Icon(Icons.category, color: Colors.white, size: 30),
+    Icon(Icons.video_library, color: Colors.white, size: 30),
+    Icon(Icons.assignment, color: Colors.white, size: 30),
+    Icon(Icons.store, color: Colors.white, size: 30),
+    Icon(Icons.play_circle_fill, color: Colors.white, size: 30),
+    Icon(Icons.emoji_events, color: Colors.white, size: 30),
+  ];
+
+  void removeStudentData() {
+    context.read<AppBloc>().add(const TriggerAppEvent(0));
+    Global.storageService.remove(AppConstants.STORAGE_STUDENT_PROFILE_KEY);
+    // Global.storageService.remove(AppConstants.STORAGE_STUDENT_ID);
+    Global.storageService.remove(AppConstants.STORAGE_TOPIC_KEY);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocListener<HomeBloc, HomeState>(
+      listener: (context, state) {
+        // if (state is DoneLoadingMySubjectsStates) {
+        //   context.read<ProfileBloc>().add(TriggerInitialStudentItemEvent(
+        //       Global.storageService.getStudentProfile()));
+        // }
+      },
+      child: BlocBuilder<HomeBloc, HomeState>(
+        builder: (context, state) {
+          if (state is DoneLoadingMySubjectsStates) {
+            return Scaffold(
+              body: ListView(
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(
+                      top: AppDimension().defaultPadding,
+                      left: AppDimension().defaultPadding,
+                      right: AppDimension().defaultPadding,
+                      bottom: AppDimension().defaultPadding,
+                    ),
+                    decoration: BoxDecoration(
+                        color: kLightPrimary,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(
+                              AppDimension().kTwentyScreenPixel),
+                          bottomRight: Radius.circular(
+                              AppDimension().kTwentyScreenPixel),
+                        )),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                // removeStudentData;
+                                Scaffold.of(context).openDrawer();
+                                // Navigator.of(context).pushNamedAndRemoveUntil(
+                                //     AppRoutes.MORE,
+                                //     // arguments: {
+                                //     //   "id": int.parse(
+                                //     //       Global.storageService.getStudentId())
+                                //     // },
+                                //     (route) => false);
+
+                                // Navigator.of(context).pushNamedAndRemoveUntil(
+                                //     AppRoutes.APPLICATIONPARENT,
+                                //     // arguments: {
+                                //     //   "id": int.parse(
+                                //     //       Global.storageService.getStudentId())
+                                //     // },
+                                //     (route) => false);
+                              },
+                              child: const Icon(
+                                Icons.list_rounded,
+                                size: 30,
+                                color: Colors.white,
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return const InvitationListScreen();
+                                    },
+                                  ),
+                                );
+                                // showDialog(
+                                //   barrierDismissible: false,
+                                //   context: context,
+                                //   builder: (_) {
+                                //     return Dialog(
+                                //       backgroundColor: kLightAccent,
+                                //       child: SizedBox(
+                                //         width: MediaQuery.of(context)
+                                //                 .size
+                                //                 .width /
+                                //             5, // Adjust the fraction as needed
+                                //         height: MediaQuery.of(context)
+                                //                 .size
+                                //                 .height /
+                                //             5, // Adjust the fraction as needed
+                                //         child: InvitationMessage(
+                                //           message: 'Haikal Invite',
+                                //           subMessage:
+                                //               'To play the quiz together',
+                                //           acceptHandler: () {
+                                //             Navigator.pop(context);
+                                //           },
+                                //           closeHandler: () {
+                                //             Navigator.pop(context);
+                                //           },
+                                //           // rightHandler: () {
+                                //           //   _quizRoomController.removePlayer(
+                                //           //       friend.studentToken!);
+                                //           //   Navigator.pop(context);
+                                //           // },
+                                //           acceptText: 'JOIN',
+                                //           // rightText: 'YES',
+                                //         ),
+                                //       ),
+                                //     );
+                                //   },
+                                // );
+                              },
+                              child: const Icon(
+                                Icons.notifications,
+                                size: 30,
+                                color: Colors.white,
+                              ),
+                            )
+                          ],
+                        ),
+                        SizedBox(height: AppDimension().kThirtyTwoScreenHeight),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 3, bottom: 15),
+                          child: Text(
+                            'Hi, ${context.read<ProfileBloc>().state.studentItem?.name}',
+                            style: const TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: 1,
+                              wordSpacing: 2,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 3, bottom: 0),
+                          child: Text(
+                            'Nama Pakej',
+                            style: TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: 1,
+                              wordSpacing: 2,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: AppDimension().kThirtyTwoScreenHeight),
+                        // Container(
+                        //   margin: const EdgeInsets.only(top: 5, bottom: 20),
+                        //   width: MediaQuery.of(context).size.width,
+                        //   height: 55,
+                        //   alignment: Alignment.center,
+                        //   // decoration: BoxDecoration(
+                        //   //   color: kLightField,
+                        //   //   borderRadius: BorderRadius.circular(10),
+                        //   // ),
+                        //   child: CustomInputField(
+                        //     controller: searchController,
+                        //     textInputAction: TextInputAction.done,
+                        //     inputType: TextInputType.emailAddress,
+                        //     hint: 'Carian....',
+                        //     fieldIcon: Icons.search,
+                        //   ),
+                        // ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(top: 20, left: 15, right: 15),
+                    child: Column(children: [
+                      // GridView.builder(
+                      //   shrinkWrap: true,
+                      //   physics: const NeverScrollableScrollPhysics(),
+                      //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      //     crossAxisCount: 3,
+                      //     childAspectRatio: 1.1,
+                      //   ),
+                      //   itemCount: catNames.length,
+                      //   itemBuilder: (context, index) {
+                      //     return Column(
+                      //       children: [
+                      //         Container(
+                      //           height: 60,
+                      //           width: 60,
+                      //           decoration: BoxDecoration(
+                      //               color: catColors[index], shape: BoxShape.circle),
+                      //           child: Center(
+                      //             child: catIcons[index],
+                      //           ),
+                      //         ),
+                      //         SizedBox(height: AppDimension().kEightScreenHeight),
+                      //         Text(
+                      //           catNames[index],
+                      //           style: TextStyle(
+                      //               fontSize: 16,
+                      //               fontWeight: FontWeight.w500,
+                      //               color: Colors.black.withOpacity(0.6)),
+                      //         )
+                      //       ],
+                      //     );
+                      //   },
+                      // ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            AppLocalizations.of(context)!.subject,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineSmall!
+                                .copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                          ),
+                          Text(
+                            AppLocalizations.of(context)!.seeAll,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineSmall!
+                                .copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                          )
+                        ],
+                      ),
+                      SizedBox(height: AppDimension().kEightScreenHeight),
+                      GridView.builder(
+                        itemCount: state.subjectItem!.length,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio:
+                              (MediaQuery.of(context).size.height - 250) /
+                                  (4 * 240),
+                          mainAxisSpacing: 10,
+                          crossAxisSpacing: 10,
+                        ),
+                        itemBuilder: ((context, index) {
+                          return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return TopicScreen(
+                                        state.subjectItem![index]);
+                                  },
+                                ),
+                              );
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 20, horizontal: 10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: kLightField,
+                              ),
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(5),
+                                    child: Image.asset(
+                                      'assets/images/categories/png/${imgList[index]}.png',
+                                      width: 100,
+                                      height: 100,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                      height: AppDimension().kTenScreenHeight),
+                                  BlocBuilder<LanguageBloc, LanguageState>(
+                                    builder: (context, stateLg) {
+                                      return Text(
+                                        stateLg.language.name == 'eng'
+                                            ? state.subjectItem![index]
+                                                    .name_eng ??
+                                                ''
+                                            : state.subjectItem![index]
+                                                    .name_bm ??
+                                                '',
+                                        style: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.black.withOpacity(0.6),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                  SizedBox(
+                                      height: AppDimension().kTenScreenHeight),
+                                  Text(
+                                    '${state.subjectItem![index].totalTopic!} Topik',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black.withOpacity(0.5),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                      height: AppDimension().kTenScreenHeight),
+                                  Center(
+                                    child: Text(
+                                      "${state.subjectItem![index].progress!.round()}%",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(
+                                            fontWeight: FontWeight.bold,
+                                            color:
+                                                Colors.black.withOpacity(0.5),
+                                          ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                      height: AppDimension().kTenScreenHeight),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: List.generate(
+                                      3, // Assuming itemCount is 3
+                                      (starIndex) {
+                                        double starRating =
+                                            Global.starCalculation(state
+                                                    .subjectItem![index]
+                                                    .progress! /
+                                                100);
+                                        //state.subjectItem![index].star!;
+                                        if (starIndex < starRating.floor()) {
+                                          // Fully filled star
+                                          return const Icon(
+                                            Icons.star,
+                                            color: Colors.amber,
+                                            size: 30,
+                                          );
+                                        } else if (starIndex ==
+                                                starRating.floor() &&
+                                            starRating % 1 != 0) {
+                                          // Half-filled star
+                                          return const Icon(
+                                            Icons.star_half,
+                                            color: Colors.amber,
+                                            size: 30,
+                                          );
+                                        } else {
+                                          // Empty star
+                                          return const Icon(
+                                            Icons.star_border,
+                                            color: Colors.grey,
+                                            size: 30,
+                                          );
+                                        }
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        }),
+                      ),
+                      SizedBox(height: AppDimension().kTwelveScreenHeight),
+                    ]),
+                  )
+                ],
+              ),
+              // bottomNavigationBar: BottomNavigationBar(
+              //   showUnselectedLabels: true,
+              //   iconSize: 32,
+              //   selectedItemColor: const Color(0xFF674AEF),
+              //   selectedFontSize: 18,
+              //   unselectedItemColor: Colors.grey,
+              //   currentIndex: currentIndex, // Set the current selected index
+              //   onTap: (int index) {
+              //     setState(() {
+              //       currentIndex = index; // Update the current selected index
+              //     });
+
+              //     // Handle click events for each item
+              //     switch (index) {
+              //       case 0: // Home
+              //         // Handle the Home item click
+              //         break;
+              //       case 1: // Prestasi
+              //         // Handle the Prestasi item click
+              //         break;
+              //       case 2: // Profile
+              //         // Handle the Profile item click
+              //         Navigator.push(
+              //           context,
+              //           MaterialPageRoute(
+              //             builder: (context) {
+              //               return const ProfileScreen();
+              //             },
+              //           ),
+              //         );
+              //         break;
+              //       case 3: // Setting
+              //         // Handle the Setting item click
+              //         Navigator.push(
+              //           context,
+              //           MaterialPageRoute(
+              //             builder: (context) {
+              //               return const SettingScreen();
+              //             },
+              //           ),
+              //         );
+              //         break;
+              //     }
+              //   },
+              //   items: const [
+              //     BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+              //     BottomNavigationBarItem(icon: Icon(Icons.stars), label: 'Prestasi'),
+              //     BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+              //     BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Setting'),
+              //   ],
+              // ),
+            );
+          } else if (state is LoadedMySubjectsStates) {
+            return const SizedBox.shrink();
+          } else if (state is LoadingMySubjectsStates) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          return const SizedBox.shrink();
+        },
+      ),
+    );
+  }
+}
