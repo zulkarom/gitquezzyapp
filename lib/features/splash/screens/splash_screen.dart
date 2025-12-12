@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ta_plus/features/reusable/widgets/taplus_loader.dart';
+import 'package:quezzy_app/features/reusable/widgets/taplus_loader.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../utils/show_snackbar.dart';

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_ta_plus/features/reusable/widgets/flutter_toast.dart';
+import 'package:quezzy_app/features/reusable/widgets/flutter_toast.dart';
 import '../../../core/constant/app_dimensions.dart';
 import '../../../core/constant/constants.dart';
 import '../../../global.dart';

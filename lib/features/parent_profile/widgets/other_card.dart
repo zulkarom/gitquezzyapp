@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_ta_plus/core/constant/colors.dart';
-import 'package:flutter_ta_plus/features/reusable/widgets/custom_icon_button.dart';
+import 'package:quezzy_app/core/constant/colors.dart';
+import 'package:quezzy_app/features/reusable/widgets/custom_icon_button.dart';
 
 import '../../../core/constant/app_dimensions.dart';
 import '../../reusable/widgets/custom_card.dart';

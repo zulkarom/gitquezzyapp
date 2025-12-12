@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:flutter_ta_plus/core/constant/colors.dart';
-import 'package:flutter_ta_plus/core/constant/constants.dart';
-import 'package:flutter_ta_plus/features/question/bloc/question_bloc.dart';
-import 'package:flutter_ta_plus/features/question/widget/circular_painter.dart';
-import 'package:flutter_ta_plus/features/question/widget/result_data.dart';
+import 'package:quezzy_app/core/constant/colors.dart';
+import 'package:quezzy_app/core/constant/constants.dart';
+import 'package:quezzy_app/features/question/bloc/question_bloc.dart';
+import 'package:quezzy_app/features/question/widget/circular_painter.dart';
+import 'package:quezzy_app/features/question/widget/result_data.dart';
 
 import '../../../core/constant/app_dimensions.dart';
 import '../../reusable/widgets/custom_app_bar.dart';

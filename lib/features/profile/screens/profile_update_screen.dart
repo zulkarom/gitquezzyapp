@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ta_plus/core/constant/constants.dart';
-import 'package:flutter_ta_plus/features/profile/bloc/profile_bloc.dart';
-import 'package:flutter_ta_plus/features/profile/controllers/profile_controller.dart';
-import 'package:flutter_ta_plus/features/profile/widgets/profile_widget.dart';
-import 'package:flutter_ta_plus/features/reusable/widgets/custom_app_bar.dart';
-import 'package:flutter_ta_plus/features/reusable/widgets/custom_icon_button.dart';
+import 'package:quezzy_app/core/constant/constants.dart';
+import 'package:quezzy_app/features/profile/bloc/profile_bloc.dart';
+import 'package:quezzy_app/features/profile/controllers/profile_controller.dart';
+import 'package:quezzy_app/features/profile/widgets/profile_widget.dart';
+import 'package:quezzy_app/features/reusable/widgets/custom_app_bar.dart';
+import 'package:quezzy_app/features/reusable/widgets/custom_icon_button.dart';
 
 import '../../../core/constant/app_dimensions.dart';
 import '../../reusable/widgets/custom_input_field.dart';

@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ta_plus/core/bloc/theme/theme_bloc.dart';
-import 'package:flutter_ta_plus/features/reusable/widgets/circle_gradient_icon.dart';
+import 'package:quezzy_app/core/bloc/theme/theme_bloc.dart';
+import 'package:quezzy_app/features/reusable/widgets/circle_gradient_icon.dart';
 
 class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
   final IconData iconData;

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ta_plus/core/api/subject_api.dart';
-import 'package:flutter_ta_plus/core/models/entities.dart';
-import 'package:flutter_ta_plus/features/home/bloc/home_event.dart';
+import 'package:quezzy_app/core/api/subject_api.dart';
+import 'package:quezzy_app/core/models/entities.dart';
+import 'package:quezzy_app/features/home/bloc/home_event.dart';
 
 import '../../../global.dart';
 import '../bloc/home_bloc.dart';

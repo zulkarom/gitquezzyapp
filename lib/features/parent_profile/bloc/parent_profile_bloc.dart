@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter_ta_plus/core/models/entities.dart';
+import 'package:quezzy_app/core/models/entities.dart';
 
 part 'parent_profile_event.dart';
 part 'parent_profile_state.dart';

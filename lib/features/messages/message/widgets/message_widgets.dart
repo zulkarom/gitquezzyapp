@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_ta_plus/core/constant/colors.dart';
+import 'package:quezzy_app/core/constant/colors.dart';
 
 import '../../../../core/models/entities.dart';
 import '../../../../core/utils/app_date.dart';

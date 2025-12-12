@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_ta_plus/core/constant/colors.dart';
+import 'package:quezzy_app/core/constant/colors.dart';
 
 import '../../../core/constant/app_dimensions.dart';
 import '../../reusable/widgets/custom_app_bar.dart';

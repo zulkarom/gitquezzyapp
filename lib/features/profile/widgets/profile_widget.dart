@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_ta_plus/core/constant/colors.dart';
-import 'package:flutter_ta_plus/core/models/entities.dart';
-import 'package:flutter_ta_plus/features/profile/bloc/profile_bloc.dart';
-import 'package:flutter_ta_plus/features/reusable/screens/avatar_screen.dart';
-import 'package:flutter_ta_plus/features/reusable/widgets/avatar_widget.dart';
+import 'package:quezzy_app/core/constant/colors.dart';
+import 'package:quezzy_app/core/models/entities.dart';
+import 'package:quezzy_app/features/profile/bloc/profile_bloc.dart';
+import 'package:quezzy_app/features/reusable/screens/avatar_screen.dart';
+import 'package:quezzy_app/features/reusable/widgets/avatar_widget.dart';
 
 Widget profileIconAndEditButton(
   BuildContext context,

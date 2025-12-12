@@ -5,8 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_ta_plus/features/auth/bloc/login/login_bloc.dart';
-import 'package:flutter_ta_plus/features/student/controller/student_controller.dart';
+import 'package:quezzy_app/features/auth/bloc/login/login_bloc.dart';
+import 'package:quezzy_app/features/student/controller/student_controller.dart';
 
 import '../../../core/api/user_api.dart';
 import '../../../core/constant/constants.dart';

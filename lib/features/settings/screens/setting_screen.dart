@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ta_plus/features/l10n/app_localization.dart';
-import 'package:flutter_ta_plus/core/bloc/language/language_bloc.dart';
+import 'package:quezzy_app/features/l10n/app_localization.dart';
+import 'package:quezzy_app/core/bloc/language/language_bloc.dart';
 
 import '../../../core/bloc/fontsize/fontsize_bloc.dart';
 import '../../../core/bloc/theme/theme_bloc.dart';

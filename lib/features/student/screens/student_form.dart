@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ta_plus/core/constant/constants.dart';
-import 'package:flutter_ta_plus/features/student/controller/student_controller.dart';
-import 'package:flutter_ta_plus/features/student/widgets/student_widget.dart';
+import 'package:quezzy_app/core/constant/constants.dart';
+import 'package:quezzy_app/features/student/controller/student_controller.dart';
+import 'package:quezzy_app/features/student/widgets/student_widget.dart';
 
 import '../../../core/constant/app_dimensions.dart';
 import '../../../utils/show_snackbar.dart';

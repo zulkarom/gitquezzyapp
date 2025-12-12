@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ta_plus/features/student/controller/student_controller.dart';
+import 'package:quezzy_app/features/student/controller/student_controller.dart';
 import '../../../core/constant/app_dimensions.dart';
 import '../../../core/models/entities.dart';
 import '../../reusable/widgets/custom_input_field.dart';

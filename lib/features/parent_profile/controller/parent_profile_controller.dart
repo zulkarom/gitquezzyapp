@@ -2,11 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_ta_plus/core/api/student_api.dart';
-import 'package:flutter_ta_plus/core/api/user_api.dart';
-import 'package:flutter_ta_plus/core/models/user.dart';
-import 'package:flutter_ta_plus/features/parent_profile/bloc/parent_profile_bloc.dart';
-import 'package:flutter_ta_plus/features/reusable/widgets/flutter_toast.dart';
+import 'package:quezzy_app/core/api/student_api.dart';
+import 'package:quezzy_app/core/api/user_api.dart';
+import 'package:quezzy_app/core/models/user.dart';
+import 'package:quezzy_app/features/parent_profile/bloc/parent_profile_bloc.dart';
+import 'package:quezzy_app/features/reusable/widgets/flutter_toast.dart';
 import '../../../global.dart';
 
 class ParentProfileController {

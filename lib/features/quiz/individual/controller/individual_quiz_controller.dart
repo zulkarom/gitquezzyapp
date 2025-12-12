@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ta_plus/core/models/entities.dart';
+import 'package:quezzy_app/core/models/entities.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_ta_plus/features/quiz/individual/bloc/individual_quiz_bloc.dart';
+import 'package:quezzy_app/features/quiz/individual/bloc/individual_quiz_bloc.dart';
 
 import '../../../../core/api/question_api.dart';
 import '../../../../global.dart';

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_ta_plus/core/models/entities.dart';
-import 'package:flutter_ta_plus/features/level/screens/level_screen.dart';
-import 'package:flutter_ta_plus/features/question/bloc/question_bloc.dart';
-import 'package:flutter_ta_plus/features/question/bloc/question_event.dart';
-import 'package:flutter_ta_plus/features/question/widget/question_widget.dart';
+import 'package:quezzy_app/core/models/entities.dart';
+import 'package:quezzy_app/features/level/screens/level_screen.dart';
+import 'package:quezzy_app/features/question/bloc/question_bloc.dart';
+import 'package:quezzy_app/features/question/bloc/question_event.dart';
+import 'package:quezzy_app/features/question/widget/question_widget.dart';
 
 import '../../../core/constant/app_dimensions.dart';
 import '../../../core/constant/constants.dart';
@@ -16,7 +16,7 @@ import '../../reusable/widgets/custom_icon_button.dart';
 import '../../reusable/widgets/custom_snack_bar.dart';
 import '../bloc/question_state.dart';
 import '../controller/question_controller.dart';
-import 'package:flutter_ta_plus/features/l10n/app_localization.dart';
+import 'package:quezzy_app/features/l10n/app_localization.dart';
 
 class QuestionScreen extends StatefulWidget {
   const QuestionScreen({super.key});

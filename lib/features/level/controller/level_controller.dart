@@ -4,8 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ta_plus/core/firebase_services/answer_firestore.dart';
-import 'package:flutter_ta_plus/core/models/entities.dart';
+import 'package:quezzy_app/core/firebase_services/answer_firestore.dart';
+import 'package:quezzy_app/core/models/entities.dart';
 
 import '../../../core/api/level_api.dart';
 import '../../../core/constant/constants.dart';

@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ta_plus/features/reusable/widgets/custom_snack_bar.dart';
-import 'package:flutter_ta_plus/features/reusable/widgets/flutter_toast.dart';
-import 'package:flutter_ta_plus/utils/show_snackbar.dart';
+import 'package:quezzy_app/features/reusable/widgets/custom_snack_bar.dart';
+import 'package:quezzy_app/features/reusable/widgets/flutter_toast.dart';
+import 'package:quezzy_app/utils/show_snackbar.dart';
 
 class ForgotPasswordController {
   final BuildContext context;

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_ta_plus/core/constant/colors.dart';
-import 'package:flutter_ta_plus/features/parent_application/bloc/app_parent_bloc.dart';
-import 'package:flutter_ta_plus/features/parent_application/widgets/app_parent_widget.dart';
+import 'package:quezzy_app/core/constant/colors.dart';
+import 'package:quezzy_app/features/parent_application/bloc/app_parent_bloc.dart';
+import 'package:quezzy_app/features/parent_application/widgets/app_parent_widget.dart';
 
 class ApplicationParentScreen extends StatefulWidget {
   const ApplicationParentScreen({super.key});

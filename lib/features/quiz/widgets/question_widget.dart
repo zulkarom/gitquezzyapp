@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/constant/constants.dart';
 import '../../../core/models/entities.dart';
-import 'package:flutter_ta_plus/features/l10n/app_localization.dart';
+import 'package:quezzy_app/features/l10n/app_localization.dart';
 
 Widget questionWidget(
     BuildContext context, List<Question>? question, int? currentQuestionIndex) {

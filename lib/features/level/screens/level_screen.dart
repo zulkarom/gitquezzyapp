@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:flutter_ta_plus/core/constant/app_dimensions.dart';
-import 'package:flutter_ta_plus/features/level/bloc/level_bloc.dart';
-import 'package:flutter_ta_plus/features/level/controller/level_controller.dart';
-import 'package:flutter_ta_plus/features/messages/message/message_screen.dart';
-import 'package:flutter_ta_plus/features/topic/screens/topic_screen.dart';
+import 'package:quezzy_app/core/constant/app_dimensions.dart';
+import 'package:quezzy_app/features/level/bloc/level_bloc.dart';
+import 'package:quezzy_app/features/level/controller/level_controller.dart';
+import 'package:quezzy_app/features/messages/message/message_screen.dart';
+import 'package:quezzy_app/features/topic/screens/topic_screen.dart';
 import 'package:sizer/sizer.dart';
 import '../../../core/bloc/language/language_bloc.dart';
 import '../../../core/models/entities.dart';

@@ -1,5 +1,5 @@
-import 'package:flutter_ta_plus/core/models/entities.dart';
-import 'package:flutter_ta_plus/core/models/subscribe.dart';
+import 'package:quezzy_app/core/models/entities.dart';
+import 'package:quezzy_app/core/models/subscribe.dart';
 
 import '../utils/http_util.dart';
 

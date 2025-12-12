@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ta_plus/features/quiz_room/screens/invitation_list_screen.dart';
+import 'package:quezzy_app/features/quiz_room/screens/invitation_list_screen.dart';
 
 import '../../../core/models/entities.dart';
 import '../../../routes/routes.dart';

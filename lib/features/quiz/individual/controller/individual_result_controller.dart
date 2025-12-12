@@ -2,9 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_ta_plus/core/api/level_api.dart';
-import 'package:flutter_ta_plus/core/models/entities.dart';
-import 'package:flutter_ta_plus/features/quiz/individual/bloc/individual_result_bloc.dart';
+import 'package:quezzy_app/core/api/level_api.dart';
+import 'package:quezzy_app/core/models/entities.dart';
+import 'package:quezzy_app/features/quiz/individual/bloc/individual_result_bloc.dart';
 
 import '../../../../core/api/result_api.dart';
 import '../../../../core/firebase_services/answer_firestore.dart';

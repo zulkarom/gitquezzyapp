@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ta_plus/core/api/student_api.dart';
-import 'package:flutter_ta_plus/core/bloc/avatar/avatar_bloc.dart';
+import 'package:quezzy_app/core/api/student_api.dart';
+import 'package:quezzy_app/core/bloc/avatar/avatar_bloc.dart';
 import '../../../global.dart';
 
 class CommonController {

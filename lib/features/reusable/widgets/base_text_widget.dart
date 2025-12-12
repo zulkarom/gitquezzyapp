@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_ta_plus/core/constant/colors.dart';
+import 'package:quezzy_app/core/constant/colors.dart';
 
 Widget reusableText(String text,
     {Color color = kPrimaryColor,

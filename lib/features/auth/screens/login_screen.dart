@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ta_plus/core/constant/app_dimensions.dart';
-import 'package:flutter_ta_plus/core/responsive/responsive.dart';
-import 'package:flutter_ta_plus/features/reusable/widgets/custom_input_field.dart';
+import 'package:quezzy_app/core/constant/app_dimensions.dart';
+import 'package:quezzy_app/core/responsive/responsive.dart';
+import 'package:quezzy_app/features/reusable/widgets/custom_input_field.dart';
 import '../../reusable/widgets/account_check.dart';
 import '../../reusable/widgets/background.dart';
 import '../bloc/login/login_bloc.dart';

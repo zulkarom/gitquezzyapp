@@ -1,8 +1,8 @@
 //We need context for accessing bloc
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_ta_plus/core/services/auth_login/auth_services.dart';
-import 'package:flutter_ta_plus/features/forgot_password/screens/forgot_password_screen.dart';
+import 'package:quezzy_app/core/services/auth_login/auth_services.dart';
+import 'package:quezzy_app/features/forgot_password/screens/forgot_password_screen.dart';
 
 import '../../../core/constant/colors.dart';
 import '../controllers/login_controller.dart';

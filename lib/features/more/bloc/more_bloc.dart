@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ta_plus/core/models/student.dart';
-import 'package:flutter_ta_plus/core/models/subscribe.dart';
+import 'package:quezzy_app/core/models/student.dart';
+import 'package:quezzy_app/core/models/subscribe.dart';
 
 part 'more_event.dart';
 part 'more_state.dart';

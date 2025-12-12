@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ta_plus/features/student/screens/forget_pin_form.dart';
+import 'package:quezzy_app/features/student/screens/forget_pin_form.dart';
 import '../../../core/constant/app_dimensions.dart';
 import '../../reusable/widgets/custom_app_bar.dart';
 import '../../reusable/widgets/custom_icon_button.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ta_plus/features/quiz/multiplayer/controller/performance_controller.dart';
-import 'package:flutter_ta_plus/global.dart';
+import 'package:quezzy_app/features/quiz/multiplayer/controller/performance_controller.dart';
+import 'package:quezzy_app/global.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:sizer/sizer.dart';
 import '../../../../core/bloc/language/language_bloc.dart';
@@ -10,7 +10,7 @@ import '../../../../core/models/entities.dart';
 import '../../../reusable/widgets/custom_app_bar.dart';
 import '../../../reusable/widgets/custom_icon_button.dart';
 import '../bloc/multiplayer_quiz_bloc.dart';
-import 'package:flutter_ta_plus/features/l10n/app_localization.dart';
+import 'package:quezzy_app/features/l10n/app_localization.dart';
 
 class MultiplayerPerformanceScreen extends StatefulWidget {
   const MultiplayerPerformanceScreen({

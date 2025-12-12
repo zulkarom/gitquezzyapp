@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_ta_plus/core/constant/app_dimensions.dart';
-import 'package:flutter_ta_plus/core/constant/colors.dart';
-import 'package:flutter_ta_plus/core/models/entities.dart';
+import 'package:quezzy_app/core/constant/app_dimensions.dart';
+import 'package:quezzy_app/core/constant/colors.dart';
+import 'package:quezzy_app/core/models/entities.dart';
 
 // for student grid view ui
 Widget studentGrid(StudentItem item, String imageUrl, BuildContext context) {

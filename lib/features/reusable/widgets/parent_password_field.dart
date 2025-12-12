@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ta_plus/core/constant/app_dimensions.dart';
-import 'package:flutter_ta_plus/features/reusable/widgets/custom_input_field.dart';
-import 'package:flutter_ta_plus/features/reusable/widgets/flutter_toast.dart';
+import 'package:quezzy_app/core/constant/app_dimensions.dart';
+import 'package:quezzy_app/features/reusable/widgets/custom_input_field.dart';
+import 'package:quezzy_app/features/reusable/widgets/flutter_toast.dart';
 
 class ParentPasswordField extends StatefulWidget {
   const ParentPasswordField({super.key, this.passwordHandler, this.msg});

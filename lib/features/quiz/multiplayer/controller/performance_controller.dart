@@ -3,9 +3,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_ta_plus/core/api/quiz_room_api.dart';
-import 'package:flutter_ta_plus/features/quiz/multiplayer/bloc/multiplayer_quiz_bloc.dart';
-import 'package:flutter_ta_plus/features/quiz_room/bloc/quiz_room_bloc.dart';
+import 'package:quezzy_app/core/api/quiz_room_api.dart';
+import 'package:quezzy_app/features/quiz/multiplayer/bloc/multiplayer_quiz_bloc.dart';
+import 'package:quezzy_app/features/quiz_room/bloc/quiz_room_bloc.dart';
 
 import '../../../../core/models/entities.dart';
 import '../../../../global.dart';

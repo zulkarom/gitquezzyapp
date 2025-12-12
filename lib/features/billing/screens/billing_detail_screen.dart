@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ta_plus/core/bloc/language/language_bloc.dart';
-import 'package:flutter_ta_plus/core/constant/app_dimensions.dart';
-import 'package:flutter_ta_plus/features/reusable/widgets/custom_app_bar.dart';
-import 'package:flutter_ta_plus/features/reusable/widgets/custom_icon_button.dart';
-import 'package:flutter_ta_plus/features/reusable/widgets/default_app_bar.dart';
+import 'package:quezzy_app/core/bloc/language/language_bloc.dart';
+import 'package:quezzy_app/core/constant/app_dimensions.dart';
+import 'package:quezzy_app/features/reusable/widgets/custom_app_bar.dart';
+import 'package:quezzy_app/features/reusable/widgets/custom_icon_button.dart';
+import 'package:quezzy_app/features/reusable/widgets/default_app_bar.dart';
 
 class BillingDetailScreen extends StatefulWidget {
   const BillingDetailScreen({Key? key}) : super(key: key);

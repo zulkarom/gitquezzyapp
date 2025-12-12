@@ -2,14 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_ta_plus/core/constant/colors.dart';
-import 'package:flutter_ta_plus/features/messages/chat/bloc/chat_blocs.dart';
-import 'package:flutter_ta_plus/features/messages/chat/bloc/chat_events.dart';
-import 'package:flutter_ta_plus/features/messages/chat/bloc/chat_states.dart';
-import 'package:flutter_ta_plus/features/messages/chat/controller/chat_controller.dart';
-import 'package:flutter_ta_plus/features/messages/chat/widgets/chat_widgets.dart';
-import 'package:flutter_ta_plus/features/reusable/widgets/base_text_widget.dart';
-import 'package:flutter_ta_plus/features/reusable/widgets/text_field.dart';
+import 'package:quezzy_app/core/constant/colors.dart';
+import 'package:quezzy_app/features/messages/chat/bloc/chat_blocs.dart';
+import 'package:quezzy_app/features/messages/chat/bloc/chat_events.dart';
+import 'package:quezzy_app/features/messages/chat/bloc/chat_states.dart';
+import 'package:quezzy_app/features/messages/chat/controller/chat_controller.dart';
+import 'package:quezzy_app/features/messages/chat/widgets/chat_widgets.dart';
+import 'package:quezzy_app/features/reusable/widgets/base_text_widget.dart';
+import 'package:quezzy_app/features/reusable/widgets/text_field.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({Key? key}) : super(key: key);

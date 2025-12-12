@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ta_plus/core/models/entities.dart';
+import 'package:quezzy_app/core/models/entities.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../../../core/api/question_api.dart';

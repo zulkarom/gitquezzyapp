@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_ta_plus/core/constant/colors.dart';
-import 'package:flutter_ta_plus/features/parent_performance/screens/parent_performance_screen.dart';
-import 'package:flutter_ta_plus/features/parent_profile/bloc/parent_profile_bloc.dart';
-import 'package:flutter_ta_plus/features/parent_profile/screens/parent_profile_screen.dart';
-import 'package:flutter_ta_plus/features/profile/screens/profile_screen.dart';
-import 'package:flutter_ta_plus/features/settings/screens/setting_screen.dart';
-import 'package:flutter_ta_plus/features/student/bloc/student_bloc.dart';
-import 'package:flutter_ta_plus/features/student/screens/student_list_screen.dart';
+import 'package:quezzy_app/core/constant/colors.dart';
+import 'package:quezzy_app/features/parent_performance/screens/parent_performance_screen.dart';
+import 'package:quezzy_app/features/parent_profile/bloc/parent_profile_bloc.dart';
+import 'package:quezzy_app/features/parent_profile/screens/parent_profile_screen.dart';
+import 'package:quezzy_app/features/profile/screens/profile_screen.dart';
+import 'package:quezzy_app/features/settings/screens/setting_screen.dart';
+import 'package:quezzy_app/features/student/bloc/student_bloc.dart';
+import 'package:quezzy_app/features/student/screens/student_list_screen.dart';
 
 Widget buildPage(int index) {
   List<Widget> widget = [

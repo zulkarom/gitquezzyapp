@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ta_plus/core/constant/constants.dart';
+import 'package:quezzy_app/core/constant/constants.dart';
 
 class CustomCardV1 extends StatelessWidget {
   final String? imageUrl;

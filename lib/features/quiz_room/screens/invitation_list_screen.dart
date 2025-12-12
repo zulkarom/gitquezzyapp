@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ta_plus/features/quiz_room/bloc/quiz_room_bloc.dart';
-import 'package:flutter_ta_plus/features/quiz_room/controllers/invitation_controller.dart';
-import 'package:flutter_ta_plus/features/quiz_room/widgets/invitation_card.dart';
+import 'package:quezzy_app/features/quiz_room/bloc/quiz_room_bloc.dart';
+import 'package:quezzy_app/features/quiz_room/controllers/invitation_controller.dart';
+import 'package:quezzy_app/features/quiz_room/widgets/invitation_card.dart';
 import '../../../core/bloc/language/language_bloc.dart';
 import '../../../core/constant/app_dimensions.dart';
 import '../../reusable/widgets/custom_app_bar.dart';

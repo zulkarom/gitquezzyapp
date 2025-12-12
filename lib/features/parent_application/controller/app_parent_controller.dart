@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ta_plus/features/parent_application/bloc/app_parent_bloc.dart';
-import 'package:flutter_ta_plus/features/reusable/widgets/flutter_toast.dart';
+import 'package:quezzy_app/features/parent_application/bloc/app_parent_bloc.dart';
+import 'package:quezzy_app/features/reusable/widgets/flutter_toast.dart';
 
 class AppParentController {
   final BuildContext context;

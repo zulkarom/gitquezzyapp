@@ -1,4 +1,4 @@
-import 'package:flutter_ta_plus/core/bloc/data/cubit/data_state.dart';
+import 'package:quezzy_app/core/bloc/data/cubit/data_state.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 class DataCubit extends HydratedCubit<DataState> {

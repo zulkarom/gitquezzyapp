@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ta_plus/features/more/bloc/more_bloc.dart';
-import 'package:flutter_ta_plus/features/student/controller/student_controller.dart';
-import 'package:flutter_ta_plus/global.dart';
+import 'package:quezzy_app/features/more/bloc/more_bloc.dart';
+import 'package:quezzy_app/features/student/controller/student_controller.dart';
+import 'package:quezzy_app/global.dart';
 import '../../../core/constant/app_dimensions.dart';
 import '../../reusable/widgets/custom_input_field.dart';
 import '../../reusable/widgets/flutter_toast.dart';

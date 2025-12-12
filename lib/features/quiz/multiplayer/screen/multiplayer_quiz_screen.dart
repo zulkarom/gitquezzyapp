@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ta_plus/core/models/entities.dart';
-import 'package:flutter_ta_plus/features/l10n/app_localization.dart';
-import 'package:flutter_ta_plus/features/quiz/multiplayer/screen/multiplayer_performance_screen.dart';
+import 'package:quezzy_app/core/models/entities.dart';
+import 'package:quezzy_app/features/l10n/app_localization.dart';
+import 'package:quezzy_app/features/quiz/multiplayer/screen/multiplayer_performance_screen.dart';
 
 import '../../../../core/constant/app_dimensions.dart';
 import '../../../../routes/routes.dart';

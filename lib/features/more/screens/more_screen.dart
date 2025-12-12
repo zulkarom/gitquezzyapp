@@ -2,19 +2,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_ta_plus/core/constant/app_dimensions.dart';
-import 'package:flutter_ta_plus/core/constant/colors.dart';
-import 'package:flutter_ta_plus/core/constant/constants.dart';
-import 'package:flutter_ta_plus/features/more/bloc/more_bloc.dart';
-import 'package:flutter_ta_plus/features/more/controllers/more_controller.dart';
-import 'package:flutter_ta_plus/features/more/widgets/password_field.dart';
-import 'package:flutter_ta_plus/features/quiz_room/screens/invitation_list_screen.dart';
-import 'package:flutter_ta_plus/features/reusable/widgets/custom_app_bar.dart';
-import 'package:flutter_ta_plus/features/reusable/widgets/custom_icon_button.dart';
-import 'package:flutter_ta_plus/features/student/screens/password_form.dart';
-import 'package:flutter_ta_plus/features/student/widgets/student_widget.dart';
-import 'package:flutter_ta_plus/global.dart';
-import 'package:flutter_ta_plus/routes/routes.dart';
+import 'package:quezzy_app/core/constant/app_dimensions.dart';
+import 'package:quezzy_app/core/constant/colors.dart';
+import 'package:quezzy_app/core/constant/constants.dart';
+import 'package:quezzy_app/features/more/bloc/more_bloc.dart';
+import 'package:quezzy_app/features/more/controllers/more_controller.dart';
+import 'package:quezzy_app/features/more/widgets/password_field.dart';
+import 'package:quezzy_app/features/quiz_room/screens/invitation_list_screen.dart';
+import 'package:quezzy_app/features/reusable/widgets/custom_app_bar.dart';
+import 'package:quezzy_app/features/reusable/widgets/custom_icon_button.dart';
+import 'package:quezzy_app/features/student/screens/password_form.dart';
+import 'package:quezzy_app/features/student/widgets/student_widget.dart';
+import 'package:quezzy_app/global.dart';
+import 'package:quezzy_app/routes/routes.dart';
 
 class MoreScreen extends StatefulWidget {
   const MoreScreen({super.key});

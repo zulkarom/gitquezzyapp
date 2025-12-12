@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ta_plus/core/constant/colors.dart';
-import 'package:flutter_ta_plus/core/constant/constants.dart';
-import 'package:flutter_ta_plus/features/performance/bloc/performance_bloc.dart';
-import 'package:flutter_ta_plus/features/performance/controller/performance_controller.dart';
+import 'package:quezzy_app/core/constant/colors.dart';
+import 'package:quezzy_app/core/constant/constants.dart';
+import 'package:quezzy_app/features/performance/bloc/performance_bloc.dart';
+import 'package:quezzy_app/features/performance/controller/performance_controller.dart';
 
 import '../../reusable/widgets/custom_app_bar.dart';
 

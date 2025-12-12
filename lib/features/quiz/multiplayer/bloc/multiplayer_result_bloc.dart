@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ta_plus/global.dart';
+import 'package:quezzy_app/global.dart';
 
 import '../../../../core/models/entities.dart';
 

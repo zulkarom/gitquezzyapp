@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_ta_plus/core/api/package_api.dart';
-import 'package:flutter_ta_plus/core/models/subscribe.dart';
+import 'package:quezzy_app/core/api/package_api.dart';
+import 'package:quezzy_app/core/models/subscribe.dart';
 import '../../../global.dart';
 import '../../reusable/widgets/flutter_toast.dart';
 import '../bloc/package_bloc.dart';

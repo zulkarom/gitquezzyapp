@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ta_plus/core/constant/app_dimensions.dart';
-import 'package:flutter_ta_plus/core/constant/colors.dart';
+import 'package:quezzy_app/core/constant/app_dimensions.dart';
+import 'package:quezzy_app/core/constant/colors.dart';
 
 class LevelBoard extends StatelessWidget {
   final int? info;

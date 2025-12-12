@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_ta_plus/core/constant/colors.dart';
-import 'package:flutter_ta_plus/features/application/widgets/application_widget.dart';
-import 'package:flutter_ta_plus/features/messages/message/message_screen.dart';
-import 'package:flutter_ta_plus/features/more/bloc/more_bloc.dart';
-import 'package:flutter_ta_plus/features/more/screens/side_menu.dart';
+import 'package:quezzy_app/core/constant/colors.dart';
+import 'package:quezzy_app/features/application/widgets/application_widget.dart';
+import 'package:quezzy_app/features/messages/message/message_screen.dart';
+import 'package:quezzy_app/features/more/bloc/more_bloc.dart';
+import 'package:quezzy_app/features/more/screens/side_menu.dart';
 import 'bloc/app_bloc.dart';
 
 class ApplicationPage extends StatefulWidget {

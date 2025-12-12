@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ta_plus/features/reusable/widgets/parent_password_field.dart';
-import 'package:flutter_ta_plus/features/student/controller/student_controller.dart';
+import 'package:quezzy_app/features/reusable/widgets/parent_password_field.dart';
+import 'package:quezzy_app/features/student/controller/student_controller.dart';
 
 class ForgetPinConfirmation extends StatelessWidget {
   final int? studentId;

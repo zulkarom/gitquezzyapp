@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_ta_plus/core/api/student_api.dart';
-import 'package:flutter_ta_plus/core/constant/constants.dart';
-import 'package:flutter_ta_plus/core/models/entities.dart';
-import 'package:flutter_ta_plus/features/profile/bloc/profile_bloc.dart';
+import 'package:quezzy_app/core/api/student_api.dart';
+import 'package:quezzy_app/core/constant/constants.dart';
+import 'package:quezzy_app/core/models/entities.dart';
+import 'package:quezzy_app/features/profile/bloc/profile_bloc.dart';
 import '../../../global.dart';
 import '../../reusable/widgets/flutter_toast.dart';
 
