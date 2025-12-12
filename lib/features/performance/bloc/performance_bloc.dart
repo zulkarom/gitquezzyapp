@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ta_plus/core/models/subscribe.dart';
 import 'package:flutter_ta_plus/global.dart';
 
-import '../../../core/models/entities.dart';
 
 part 'performance_event.dart';
 part 'performance_state.dart';

@@ -46,7 +46,9 @@ class RegisterController {
       if (crendential.user != null) {
         await crendential.user?.sendEmailVerification();
         await crendential.user?.updateDisplayName(name);
-        String photoUrl = "uploads/default.png";
+        // Use a real bundled default avatar asset path instead of a missing
+        // 'uploads/default.png' path that causes 404s on web.
+        const String photoUrl = "assets/images/others/png/profile.png";
         await crendential.user?.updatePhotoURL(photoUrl);
         toastInfo(
             msg:

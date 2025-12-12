@@ -48,12 +48,25 @@ class UserLoginResponseEntity {
     this.data,
   });
 
-  factory UserLoginResponseEntity.fromJson(Map<String, dynamic> json) =>
-      UserLoginResponseEntity(
-        code: json["code"],
-        msg: json["msg"],
-        data: UserItem.fromJson(json["data"]),
-      );
+  factory UserLoginResponseEntity.fromJson(Map<String, dynamic> json) {
+    final rawData = json["data"];
+    UserItem? userItem;
+
+    if (rawData is List && rawData.isNotEmpty) {
+      final first = rawData.first;
+      if (first is Map<String, dynamic>) {
+        userItem = UserItem.fromJson(first);
+      }
+    } else if (rawData is Map<String, dynamic>) {
+      userItem = UserItem.fromJson(rawData);
+    }
+
+    return UserLoginResponseEntity(
+      code: json["code"],
+      msg: json["msg"],
+      data: userItem,
+    );
+  }
 }
 
 // login result

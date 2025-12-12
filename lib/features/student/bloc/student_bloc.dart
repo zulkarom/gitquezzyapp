@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/error/failures/failure.dart';
 import '../../../core/models/avatar.dart';
 import '../../../core/models/student.dart';
-import '../../../repository/repository.dart';
 
 part 'student_event.dart';
 part 'student_state.dart';

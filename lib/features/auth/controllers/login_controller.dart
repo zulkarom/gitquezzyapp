@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_ta_plus/features/auth/bloc/login/login_bloc.dart';
 import 'package:flutter_ta_plus/features/student/controller/student_controller.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../core/api/user_api.dart';
 import '../../../core/constant/constants.dart';
@@ -91,7 +91,11 @@ class LoginController {
             return;
             //we have error getting user from firebase
           }
-        } on FirebaseAuthException catch (e) {
+        } on FirebaseAuthException catch (e, st) {
+          
+          print('FIREBASE AUTH ERROR: ${e.code} ${e.message}');
+          print(st);
+          toastInfo(msg: "Google sign-in failed: ${e.code} ${e.message}");
           if (e.code == 'user-not-found') {
             toastInfo(msg: "User not found for this email.");
             return;
@@ -103,6 +107,10 @@ class LoginController {
             return;
           } else {}
           //
+        }catch (e, st) {
+          toastInfo(msg: "Sign-in with Google error: $e");
+          print('SIGN IN WITH GOOGLE ERROR: $e');
+          print(st);
         }
       }
     } catch (e) {
@@ -112,59 +120,53 @@ class LoginController {
 
   Future<void> signInWithGoogle(BuildContext context) async {
     try {
-      // Begin interactive sign-in process
-      final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
-
-      // Obtain auth details from request
-      final GoogleSignInAuthentication gAuth = await gUser!.authentication;
-
-      // Create a new credential for the user
-      final credential = GoogleAuthProvider.credential(
-        accessToken: gAuth.accessToken,
-        idToken: gAuth.idToken,
-      );
-
-      // Finally, let's sign in
-      final UserCredential userCredential =
-          await FirebaseAuth.instance.signInWithCredential(credential);
-
-      // Check if the user is signed in successfully
-      var user = userCredential.user;
-      if (user != null) {
-        //we got from google
-        // print('user.displayName');
-        // print(user.displayName);
-        String? displayName = user.displayName;
-        String? email = user.email;
-
-        String? id = user.uid;
-        String? photoUrl = user.photoURL;
-        LoginRequestEntity loginRequestEntity = LoginRequestEntity();
-
-        loginRequestEntity.avatar = photoUrl;
-        loginRequestEntity.name = displayName;
-        loginRequestEntity.email = email;
-        loginRequestEntity.open_id = id;
-        //type 1 means email login
-        loginRequestEntity.type = 1;
-
-        toastInfo(msg: "Redirecting...");
-        asyncPostAllData(loginRequestEntity);
-        if (context.mounted) {
-          //initialize init method
-          await StudentController(context: context).init();
-        }
-
+      if (!kIsWeb) {
+        // For now, only web Google sign-in is implemented.
+        toastInfo(msg: "Google sign-in is only available on web in this build.");
         return;
-        //we got verified user from firebase
-      } else {
-        toastInfo(msg: "Currently you are not a user of this app");
-        return;
-        //we have error getting user from firebase
       }
-    } catch (e) {
+
+      // Web Google sign-in using FirebaseAuth popup
+      final googleProvider = GoogleAuthProvider();
+      googleProvider.setCustomParameters({
+        'prompt': 'select_account',
+      });
+
+      final UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithPopup(googleProvider);
+
+      final user = userCredential.user;
+      if (user == null) {
+        toastInfo(msg: "Google sign-in failed: no user returned.");
+        return;
+      }
+
+      String? displayName = user.displayName;
+      String? email = user.email;
+      String? id = user.uid;
+      String? photoUrl = user.photoURL;
+
+      LoginRequestEntity loginRequestEntity = LoginRequestEntity();
+      loginRequestEntity.avatar = photoUrl;
+      loginRequestEntity.name = displayName;
+      loginRequestEntity.email = email;
+      loginRequestEntity.open_id = id;
+      // type 1 was used previously for both email and Google login
+      loginRequestEntity.type = 1;
+
+      toastInfo(msg: "Redirecting...");
+      await asyncPostAllData(loginRequestEntity);
+      if (context.mounted) {
+        await StudentController(context: context).init();
+      }
+    } on FirebaseAuthException catch (e, st) {
+      print('FIREBASE AUTH ERROR (Google): ${e.code} ${e.message}');
+      print(st);
+      toastInfo(msg: "Google sign-in failed: ${e.code} ${e.message}");
+    } catch (e, st) {
+      print('SIGN IN WITH GOOGLE ERROR: $e');
+      print(st);
       toastInfo(msg: "Sign-in with Google error: $e");
-      // Handle sign-in error here, e.g., display an error message.
     }
   }
 
@@ -178,19 +180,38 @@ class LoginController {
     print("......my result code is ${result.code}.......");
     if (result.code == 200) {
       try {
+        final user = result.data;
+        if (user == null) {
+          print('login success (code 200) but user data is null');
+          EasyLoading.dismiss();
+          toastInfo(msg: "Login succeeded but no user data returned.");
+          return;
+        }
+
+        // Save full user profile JSON
         Global.storageService.setString(
-            AppConstants.STORAGE_USER_PROFILE_KEY, jsonEncode(result.data!));
-        // print("result.data!.token!");
-        // print(result.data!.email!);
-        Global.storageService.setString(
-            AppConstants.STORAGE_USER_EMAIL, jsonEncode(result.data!.email!));
-        print("......my token is ${result.data!.token}.......");
-        //used for authorization
-        Global.storageService.setString(
-            AppConstants.STORAGE_USER_TOKEN_KEY, result.data!.access_token!);
-        //used as foreign key
-        Global.storageService
-            .setString(AppConstants.STORAGE_USER_TOKEN, result.data!.token!);
+            AppConstants.STORAGE_USER_PROFILE_KEY, jsonEncode(user.toJson()));
+
+        // Save email only if present
+        if (user.email != null) {
+          Global.storageService.setString(
+              AppConstants.STORAGE_USER_EMAIL, jsonEncode(user.email));
+        }
+
+        // Choose a token for authorization: prefer access_token, fall back to token
+        final authToken = user.access_token ?? user.token;
+        print("......my token is ${user.token}.......");
+        if (authToken != null && authToken.isNotEmpty) {
+          // used for authorization
+          Global.storageService.setString(
+              AppConstants.STORAGE_USER_TOKEN_KEY, authToken);
+        }
+
+        if (user.token != null && user.token!.isNotEmpty) {
+          // used as foreign key
+          Global.storageService
+              .setString(AppConstants.STORAGE_USER_TOKEN, user.token!);
+        }
         EasyLoading.dismiss();
 
         if (context.mounted) {

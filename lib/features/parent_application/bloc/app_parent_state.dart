@@ -10,14 +10,15 @@ class AppParentState extends Equatable {
     this.rePassword = "",
   });
 
-  AppParentState copyWith({String? password, String? rePassword}) {
+  AppParentState copyWith({int? index, String? password, String? rePassword}) {
     return AppParentState(
+        index: index ?? this.index,
         password: password ?? this.password,
         rePassword: rePassword ?? this.rePassword);
   }
 
   @override
-  List<Object?> get props => [password, rePassword];
+  List<Object?> get props => [index, password, rePassword];
 }
 
 class AppParentInitial extends AppParentState {}

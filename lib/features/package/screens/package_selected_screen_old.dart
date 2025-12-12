@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_ta_plus/features/reusable/widgets/flutter_toast.dart';
 import '../../../core/constant/app_dimensions.dart';
 import '../../../core/constant/constants.dart';
-import '../../../core/models/entities.dart';
 import '../../../global.dart';
 import '../../../routes/routes.dart';
 import '../../reusable/widgets/custom_app_bar.dart';

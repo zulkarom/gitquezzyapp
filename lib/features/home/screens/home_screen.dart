@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:flutter_ta_plus/features/l10n/app_localization.dart';
 import 'package:flutter_ta_plus/core/constant/app_dimensions.dart';
 import 'package:flutter_ta_plus/core/constant/colors.dart';
 import 'package:flutter_ta_plus/features/home/bloc/home_bloc.dart';
@@ -10,7 +10,6 @@ import 'package:flutter_ta_plus/features/topic/screens/topic_screen.dart';
 import 'package:flutter_ta_plus/features/more/controllers/more_controller.dart';
 import '../../../core/bloc/language/language_bloc.dart';
 import '../../../core/constant/constants.dart';
-import '../../../core/models/entities.dart';
 import '../../../global.dart';
 import '../../application/bloc/app_bloc.dart';
 import '../../quiz_room/screens/invitation_list_screen.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:flutter_ta_plus/features/l10n/app_localization.dart';
 import 'package:flutter_ta_plus/core/bloc/language/language_bloc.dart';
 
 import '../../../core/bloc/fontsize/fontsize_bloc.dart';
@@ -23,7 +23,7 @@ class SettingScreen extends StatelessWidget {
           child: Column(
         children: [
           CustomAppBar(
-            title: AppLocalizations.of(context)!.settings,
+            title: AppLocalizations.of(context)?.settings ?? 'Settings',
             // leading: [
             //   Center(
             //     child: CustomIconButton(
@@ -48,7 +48,7 @@ class SettingScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    AppLocalizations.of(context)!.displaySetting,
+                    AppLocalizations.of(context)?.displaySetting ?? 'Display setting',
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                           color: Theme.of(context).primaryColor,
                           fontWeight: FontWeight.bold,
@@ -59,7 +59,7 @@ class SettingScreen extends StatelessWidget {
                   ),
                   OptionCard(
                     svgIconPath: 'assets/images/settings/svg/theme.svg',
-                    optionName: AppLocalizations.of(context)!.theme,
+                    optionName: AppLocalizations.of(context)?.theme ?? 'Theme',
                     action: BlocBuilder<ThemeBloc, ThemeState>(
                       builder: (context, state) {
                         return ChangeThemeSwitch(
@@ -82,7 +82,7 @@ class SettingScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          AppLocalizations.of(context)!.language,
+                          AppLocalizations.of(context)?.language ?? 'Language',
                           style:
                               Theme.of(context).textTheme.titleLarge!.copyWith(
                                     color: Theme.of(context).primaryColor,
@@ -221,7 +221,7 @@ class SettingScreen extends StatelessWidget {
                                 svgIconPath:
                                     'assets/images/settings/svg/text.svg',
                                 optionName:
-                                    AppLocalizations.of(context)!.fontSize,
+                                    AppLocalizations.of(context)?.fontSize ?? 'Font size',
                                 action: Text(
                                   languageState.language.name == 'ms'
                                       ? fsName == 'small'

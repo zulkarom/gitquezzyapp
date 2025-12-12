@@ -43,7 +43,6 @@ import '../features/student/screens/student_edit_screen.dart';
 import '../features/student/screens/student_list_edit_screen.dart';
 import '../features/student/screens/student_list_screen.dart';
 import '../global.dart';
-import '../repository/repository.dart';
 
 class AppPages {
   // static final AuthRepository authRepository = AuthRepository();

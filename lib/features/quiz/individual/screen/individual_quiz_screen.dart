@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ta_plus/core/models/entities.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:flutter_ta_plus/features/l10n/app_localization.dart';
 import 'package:flutter_ta_plus/features/quiz/individual/bloc/individual_quiz_bloc.dart';
 import 'package:flutter_ta_plus/features/quiz/individual/controller/individual_quiz_controller.dart';
 import 'package:flutter_ta_plus/features/quiz/widgets/question_widget.dart';

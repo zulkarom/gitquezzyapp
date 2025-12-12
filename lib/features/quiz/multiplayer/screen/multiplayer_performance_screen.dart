@@ -10,7 +10,7 @@ import '../../../../core/models/entities.dart';
 import '../../../reusable/widgets/custom_app_bar.dart';
 import '../../../reusable/widgets/custom_icon_button.dart';
 import '../bloc/multiplayer_quiz_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:flutter_ta_plus/features/l10n/app_localization.dart';
 
 class MultiplayerPerformanceScreen extends StatefulWidget {
   const MultiplayerPerformanceScreen({

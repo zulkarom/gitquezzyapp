@@ -20,19 +20,14 @@ class Global {
   static Future init() async {
     WidgetsFlutterBinding.ensureInitialized();
     Bloc.observer = MyBlocObserver();
-    // For web, skip native Firebase Messaging setup that relies on dart:io Platform.
-    if (!kIsWeb) {
-      // await Firebase.initializeApp(
-      //     //options: DefaultFirebaseOptions.currentPlatform,
-      //     );
-      if (Platform.isAndroid) {
-        await Firebase.initializeApp(
-          options: DefaultFirebaseOptions.currentPlatform,
-        );
-      }
-      if (Platform.isAndroid) {
-        await FirebaseMessaging.instance.getInitialMessage();
-      }
+    // Initialize Firebase for all platforms using FlutterFire options.
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+
+    // For messaging, only run native Android-specific setup.
+    if (!kIsWeb && Platform.isAndroid) {
+      await FirebaseMessaging.instance.getInitialMessage();
     }
 
     // if (Platform.isAndroid) {

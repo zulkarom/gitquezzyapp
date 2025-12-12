@@ -3,8 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_ta_plus/core/constant/app_dimensions.dart';
 import 'package:flutter_ta_plus/core/constant/colors.dart';
 
-import '../../../global.dart';
-import '../../level/screens/level_screen.dart';
 
 Widget reusableText(String text,
     {Color color = kPrimaryColor,

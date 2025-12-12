@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'features/l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_ta_plus/core/bloc/data/cubit/data_cubit.dart';
@@ -40,16 +40,10 @@ Future<void> main() async {
 
   SocketIoService();
 
-  // persistance storage initialisation
-  if (kIsWeb) {
-    HydratedBloc.storage = await HydratedStorage.build(
-      storageDirectory: HydratedStorage.webStorageDirectory,
-    );
-  } else {
-    HydratedBloc.storage = await HydratedStorage.build(
-      storageDirectory: await getTemporaryDirectory(),
-    );
-  }
+  // persistance storage initialisation (web-compatible)
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: HydratedStorageDirectory.web,
+  );
   // Bloc.observer = MyBlocObserver();
   await Global.init();
 

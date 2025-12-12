@@ -16,7 +16,7 @@ import '../../reusable/widgets/custom_icon_button.dart';
 import '../../reusable/widgets/custom_snack_bar.dart';
 import '../bloc/question_state.dart';
 import '../controller/question_controller.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:flutter_ta_plus/features/l10n/app_localization.dart';
 
 class QuestionScreen extends StatefulWidget {
   const QuestionScreen({super.key});

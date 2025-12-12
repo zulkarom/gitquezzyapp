@@ -79,7 +79,7 @@ class __WelcomeScaffoldState extends State<_WelcomeScaffold> {
                   Positioned(
                     bottom: 80.h,
                     child: DotsIndicator(
-                      position: state.page,
+                      position: state.page.toDouble(),
                       dotsCount: 3,
                       mainAxisAlignment: MainAxisAlignment.center,
                       decorator: DotsDecorator(

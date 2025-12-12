@@ -2,9 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ta_plus/core/models/entities.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../../core/error/failures/failure.dart';
-import '../../../core/firebase_services/answer_firestore.dart';
-import '../../../global.dart';
 import 'question_event.dart';
 import 'question_state.dart';
 

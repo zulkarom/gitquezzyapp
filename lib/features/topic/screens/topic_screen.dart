@@ -5,7 +5,7 @@ import 'package:flutter_ta_plus/core/models/entities.dart';
 import 'package:flutter_ta_plus/features/level/screens/level_screen.dart';
 import 'package:flutter_ta_plus/features/topic/controller/topic_controller.dart';
 import 'package:flutter_ta_plus/features/topic/widgets/topic_card.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:flutter_ta_plus/features/l10n/app_localization.dart';
 import 'package:flutter_ta_plus/global.dart';
 import '../../../core/bloc/language/language_bloc.dart';
 import '../../reusable/widgets/custom_app_bar.dart';

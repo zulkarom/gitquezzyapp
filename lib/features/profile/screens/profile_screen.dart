@@ -180,19 +180,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         right: 0,
                                         child: Center(
                                           child: Container(
-                                            child: state.studentItem!.avatar ==
-                                                    null
-                                                ? Image.asset(
-                                                    AppConstants
-                                                        .DEFAULT_STUDENT_AVATAR,
-                                                    width: innerWidth * 0.45,
-                                                    fit: BoxFit.fitWidth,
-                                                  )
-                                                : Image.asset(
-                                                    state.studentItem!.avatar!,
-                                                    width: innerWidth * 0.45,
-                                                    fit: BoxFit.fitWidth,
-                                                  ),
+                                            child: _buildStudentAvatar(
+                                                innerWidth, state),
                                           ),
                                         ),
                                       ),
@@ -288,6 +277,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
           )
         ],
       ),
+    );
+  }
+
+  Widget _buildStudentAvatar(double innerWidth, ProfileState state) {
+    final String? avatarPath = state.studentItem?.avatar;
+
+    final bool useDefault = avatarPath == null ||
+        avatarPath.isEmpty ||
+        !avatarPath.startsWith('assets/');
+
+    final String effectivePath = useDefault
+        ? AppConstants.DEFAULT_STUDENT_AVATAR
+        : avatarPath;
+
+    return Image.asset(
+      effectivePath,
+      width: innerWidth * 0.45,
+      fit: BoxFit.fitWidth,
     );
   }
 }

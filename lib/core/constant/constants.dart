@@ -50,7 +50,6 @@ class AppConstants {
 }
 
 final kTopBorderRadius = BorderRadius.only(
-  topLeft: Radius.circular(SizerUtil.deviceType == DeviceType.tablet ? 40 : 20),
-  topRight:
-      Radius.circular(SizerUtil.deviceType == DeviceType.tablet ? 40 : 20),
+  topLeft: Radius.circular(20),
+  topRight: Radius.circular(20),
 );

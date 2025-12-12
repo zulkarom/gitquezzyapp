@@ -9,7 +9,7 @@ import '../../reusable/widgets/flutter_toast.dart';
 class CopyCont {
   late BuildContext context;
   CopyCont({required this.context});
-  StudentItem studentProfile = Global.storageService.getStudentProfile()!;
+  StudentItem studentProfile = Global.storageService.getStudentProfile();
   var db = FirebaseFirestore.instance; // cloud firestore
 
   Future<void> goChat(StudentItem student) async {

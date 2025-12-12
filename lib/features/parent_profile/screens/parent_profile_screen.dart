@@ -189,18 +189,7 @@ class _ParentProfileScreenState extends State<ParentProfileScreen> {
                                       right: 0,
                                       child: Center(
                                         child: Container(
-                                          child: state.userItem?.avatar == null
-                                              ? Image.asset(
-                                                  AppConstants
-                                                      .DEFAULT_STUDENT_AVATAR,
-                                                  width: innerWidth * 0.45,
-                                                  fit: BoxFit.fitWidth,
-                                                )
-                                              : Image.asset(
-                                                  state.userItem!.avatar!,
-                                                  width: innerWidth * 0.45,
-                                                  fit: BoxFit.fitWidth,
-                                                ),
+                                          child: _buildAvatar(innerWidth, state),
                                         ),
                                       ),
                                     ),
@@ -360,4 +349,25 @@ class _ParentProfileScreenState extends State<ParentProfileScreen> {
       ),
     );
   }
+}
+
+Widget _buildAvatar(double innerWidth, ParentProfileState state) {
+  final String? avatarPath = state.userItem?.avatar;
+
+  // Fallback conditions:
+  // - null or empty
+  // - paths like 'uploads/...'(not under assets/)
+  final bool useDefault = avatarPath == null ||
+      avatarPath.isEmpty ||
+      !avatarPath.startsWith('assets/');
+
+  final String effectivePath = useDefault
+      ? AppConstants.DEFAULT_STUDENT_AVATAR
+      : avatarPath;
+
+  return Image.asset(
+    effectivePath,
+    width: innerWidth * 0.45,
+    fit: BoxFit.fitWidth,
+  );
 }

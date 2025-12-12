@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
+import 'package:flutter/foundation.dart';
 
 import '../../global.dart';
 import '../constant/constants.dart';
@@ -25,12 +26,17 @@ class HttpUtil {
         contentType: "application/json: charset=utf-8",
         responseType: ResponseType.json);
     dio = Dio(options);
-    (dio.httpClientAdapter as IOHttpClientAdapter).createHttpClient = () {
-      HttpClient client = HttpClient();
-      client.badCertificateCallback =
-          (X509Certificate cert, String host, int port) => true;
-      return client;
-    };
+
+    // On non-web platforms, customize the underlying IO client to accept
+    // self-signed certificates. On web, keep the default Browser adapter.
+    if (!kIsWeb && dio.httpClientAdapter is IOHttpClientAdapter) {
+      (dio.httpClientAdapter as IOHttpClientAdapter).createHttpClient = () {
+        HttpClient client = HttpClient();
+        client.badCertificateCallback =
+            (X509Certificate cert, String host, int port) => true;
+        return client;
+      };
+    }
   }
 
   Future post(String path,
