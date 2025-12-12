@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:quezzy_app/core/constant/app_dimensions.dart';
 import 'package:quezzy_app/core/constant/colors.dart';
 import 'package:quezzy_app/features/parent_application/bloc/app_parent_bloc.dart';
 import 'package:quezzy_app/features/parent_application/widgets/app_parent_widget.dart';
@@ -23,7 +24,12 @@ class _ApplicationParentScreenState extends State<ApplicationParentScreen> {
           color: Colors.white,
           child: SafeArea(
             child: Scaffold(
-                body: buildPage(state.index),
+                body: Center(
+                  child: ConstrainedBox(
+                    constraints: AppDimension().kTabletMaxWidth,
+                    child: buildPage(state.index),
+                  ),
+                ),
                 // floatingActionButton: FloatingActionButton(
                 //   onPressed: () {
                 //     Navigator.push(

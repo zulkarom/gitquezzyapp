@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:quezzy_app/core/constant/app_dimensions.dart';
 import 'package:quezzy_app/core/constant/colors.dart';
 import 'package:quezzy_app/features/application/widgets/application_widget.dart';
 import 'package:quezzy_app/features/messages/message/message_screen.dart';
@@ -25,7 +26,12 @@ class _ApplicationPageState extends State<ApplicationPage> {
           color: Colors.white,
           child: SafeArea(
             child: Scaffold(
-                body: buildPage(state.index),
+                body: Center(
+                  child: ConstrainedBox(
+                    constraints: AppDimension().kTabletMaxWidth,
+                    child: buildPage(state.index),
+                  ),
+                ),
                 drawer: Drawer(
                   child: SingleChildScrollView(
                     child: BlocBuilder<MoreBloc, MoreState>(

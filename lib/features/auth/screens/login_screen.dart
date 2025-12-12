@@ -168,40 +168,24 @@ class TabletLoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Column(
-            children: [
-              const Text(
-                "LOGIN",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: AppDimension().kSixteenScreenHeight * 2),
-              Row(
-                children: [
-                  const Spacer(),
-                  buildThirdPartyLogin(context),
-                  // Expanded(
-                  //   flex: 8,
-                  //   child: SvgPicture.asset("assets/images/auth/svg/login.svg"),
-                  // ),
-                  const Spacer(),
-                ],
-              ),
-              SizedBox(height: AppDimension().kSixteenScreenHeight * 2),
-            ],
-          ),
+    return Center(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 600),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Text(
+              "LOGIN",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: AppDimension().kSixteenScreenHeight * 2),
+            buildThirdPartyLogin(context),
+            SizedBox(height: AppDimension().kSixteenScreenHeight * 2),
+            const _LoginForm(),
+          ],
         ),
-        const Expanded(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(width: 450, child: _LoginForm()),
-            ],
-          ),
-        ),
-      ],
+      ),
     );
   }
 }
