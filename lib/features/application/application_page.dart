@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quezzy_app/core/constant/app_dimensions.dart';
 import 'package:quezzy_app/core/constant/colors.dart';
 import 'package:quezzy_app/features/application/widgets/application_widget.dart';
 import 'package:quezzy_app/features/messages/message/message_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quezzy_app/features/home/bloc/home_bloc.dart';
 import 'package:quezzy_app/features/more/bloc/more_bloc.dart';
 import 'package:quezzy_app/features/more/screens/side_menu.dart';
 import 'bloc/app_bloc.dart';
@@ -29,7 +30,18 @@ class _ApplicationPageState extends State<ApplicationPage> {
                 body: Center(
                   child: ConstrainedBox(
                     constraints: AppDimension().kTabletMaxWidth,
-                    child: buildPage(state.index),
+                    child: Builder(
+                      builder: (context) {
+                        final page = buildPage(state.index);
+                        if (state.index == 0) {
+                          return BlocProvider<HomeBloc>(
+                            create: (_) => HomeBloc(),
+                            child: page,
+                          );
+                        }
+                        return page;
+                      },
+                    ),
                   ),
                 ),
                 drawer: Drawer(
@@ -95,20 +107,21 @@ class _ApplicationPageState extends State<ApplicationPage> {
                     selectedLabelStyle: TextStyle(
                       color: Theme.of(context).primaryColor,
                       fontWeight: FontWeight.bold,
-                      // Add other properties as needed
+                      // Use theme font size if available, otherwise a safe default
                       fontSize: Theme.of(context)
-                          .textTheme
-                          .titleMedium!
-                          .fontSize, // Use font size from theme
+                              .textTheme
+                              .titleMedium
+                              ?.fontSize ??
+                          14.0,
                     ),
                     unselectedLabelStyle: TextStyle(
                       color: Theme.of(context).canvasColor,
-                      // fontWeight: FontWeight.bold,
-                      // Add other properties as needed
+                      // Use theme font size if available, otherwise a safe default
                       fontSize: Theme.of(context)
-                          .textTheme
-                          .titleSmall!
-                          .fontSize, // Use font size from theme
+                              .textTheme
+                              .titleSmall
+                              ?.fontSize ??
+                          12.0,
                     ),
                     // selectedIconTheme: IconThemeData(
                     //   color: Theme.of(context).primaryColor,

@@ -4,7 +4,6 @@ import 'package:quezzy_app/features/l10n/app_localization.dart';
 import 'package:quezzy_app/core/constant/app_dimensions.dart';
 import 'package:quezzy_app/core/constant/colors.dart';
 import 'package:quezzy_app/features/home/bloc/home_bloc.dart';
-import 'package:quezzy_app/features/more/bloc/more_bloc.dart';
 import 'package:quezzy_app/features/profile/bloc/profile_bloc.dart';
 import 'package:quezzy_app/features/topic/screens/topic_screen.dart';
 import 'package:quezzy_app/features/more/controllers/more_controller.dart';
@@ -24,10 +23,24 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late final HomeBloc _homeBloc;
+
+  @override
+  void initState() {
+    super.initState();
+    _homeBloc = HomeBloc();
+  }
+
+  @override
+  void dispose() {
+    _homeBloc.close();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => HomeBloc(),
+    return BlocProvider<HomeBloc>.value(
+      value: _homeBloc,
       child: const _HomeScaffold(),
     );
   }
@@ -97,7 +110,10 @@ class _HomeScaffoldState extends State<_HomeScaffold> {
 
   @override
   Widget build(BuildContext context) {
+    final homeBloc = BlocProvider.of<HomeBloc>(context);
+
     return BlocListener<HomeBloc, HomeState>(
+      bloc: homeBloc,
       listener: (context, state) {
         // if (state is DoneLoadingMySubjectsStates) {
         //   context.read<ProfileBloc>().add(TriggerInitialStudentItemEvent(
@@ -105,6 +121,7 @@ class _HomeScaffoldState extends State<_HomeScaffold> {
         // }
       },
       child: BlocBuilder<HomeBloc, HomeState>(
+        bloc: homeBloc,
         builder: (context, state) {
           if (state is DoneLoadingMySubjectsStates) {
             return Scaffold(
@@ -300,30 +317,30 @@ class _HomeScaffoldState extends State<_HomeScaffold> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            AppLocalizations.of(context)!.subject,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineSmall!
+                            AppLocalizations.of(context)?.subject ?? 'Subject',
+                            style: (Theme.of(context).textTheme.headlineSmall ??
+                                    Theme.of(context).textTheme.titleMedium ??
+                                    const TextStyle())
                                 .copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  color: Theme.of(context).primaryColor,
-                                ),
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).primaryColor,
+                            ),
                           ),
                           Text(
-                            AppLocalizations.of(context)!.seeAll,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineSmall!
+                            AppLocalizations.of(context)?.seeAll ?? 'See all',
+                            style: (Theme.of(context).textTheme.headlineSmall ??
+                                    Theme.of(context).textTheme.titleMedium ??
+                                    const TextStyle())
                                 .copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  color: Theme.of(context).primaryColor,
-                                ),
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).primaryColor,
+                            ),
                           )
                         ],
                       ),
                       SizedBox(height: AppDimension().kEightScreenHeight),
                       GridView.builder(
-                        itemCount: state.subjectItem!.length,
+                        itemCount: state.subjectItem?.length ?? 0,
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -335,14 +352,14 @@ class _HomeScaffoldState extends State<_HomeScaffold> {
                           crossAxisSpacing: 10,
                         ),
                         itemBuilder: ((context, index) {
+                          final subject = state.subjectItem![index];
                           return InkWell(
                             onTap: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) {
-                                    return TopicScreen(
-                                        state.subjectItem![index]);
+                                    return TopicScreen(subject);
                                   },
                                 ),
                               );
@@ -359,7 +376,7 @@ class _HomeScaffoldState extends State<_HomeScaffold> {
                                   Padding(
                                     padding: const EdgeInsets.all(5),
                                     child: Image.asset(
-                                      'assets/images/categories/png/${imgList[index]}.png',
+                                      'assets/images/categories/png/${imgList[index % imgList.length]}.png',
                                       width: 100,
                                       height: 100,
                                     ),
@@ -370,12 +387,8 @@ class _HomeScaffoldState extends State<_HomeScaffold> {
                                     builder: (context, stateLg) {
                                       return Text(
                                         stateLg.language.name == 'eng'
-                                            ? state.subjectItem![index]
-                                                    .name_eng ??
-                                                ''
-                                            : state.subjectItem![index]
-                                                    .name_bm ??
-                                                '',
+                                            ? (subject.name_eng ?? '')
+                                            : (subject.name_bm ?? ''),
                                         style: TextStyle(
                                           fontSize: 22,
                                           fontWeight: FontWeight.w600,
@@ -387,7 +400,7 @@ class _HomeScaffoldState extends State<_HomeScaffold> {
                                   SizedBox(
                                       height: AppDimension().kTenScreenHeight),
                                   Text(
-                                    '${state.subjectItem![index].totalTopic!} Topik',
+                                    '${subject.totalTopic ?? 0} Topik',
                                     style: TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.w500,
@@ -398,15 +411,15 @@ class _HomeScaffoldState extends State<_HomeScaffold> {
                                       height: AppDimension().kTenScreenHeight),
                                   Center(
                                     child: Text(
-                                      "${state.subjectItem![index].progress!.round()}%",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium!
+                                      "${(subject.progress ?? 0).round()}%",
+                                      style: (Theme.of(context)
+                                                  .textTheme
+                                                  .bodyMedium ??
+                                              const TextStyle())
                                           .copyWith(
-                                            fontWeight: FontWeight.bold,
-                                            color:
-                                                Colors.black.withOpacity(0.5),
-                                          ),
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black.withOpacity(0.5),
+                                      ),
                                     ),
                                   ),
                                   SizedBox(
@@ -416,11 +429,8 @@ class _HomeScaffoldState extends State<_HomeScaffold> {
                                     children: List.generate(
                                       3, // Assuming itemCount is 3
                                       (starIndex) {
-                                        double starRating =
-                                            Global.starCalculation(state
-                                                    .subjectItem![index]
-                                                    .progress! /
-                                                100);
+                                        double starRating = Global
+                                            .starCalculation(((subject.progress ?? 0) / 100));
                                         //state.subjectItem![index].star!;
                                         if (starIndex < starRating.floor()) {
                                           // Fully filled star

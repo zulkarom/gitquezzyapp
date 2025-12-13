@@ -39,11 +39,22 @@ class _LoginForm extends StatefulWidget {
 class _LoginFormState extends State<_LoginForm> {
   late final TextEditingController usernameController;
   late final TextEditingController passwordController;
+  bool _submitting = false;
 
   @override
   void initState() {
     usernameController = TextEditingController();
     passwordController = TextEditingController();
+    // Prefill default credentials for development/testing
+    usernameController.text = 'quezzylearning@gmail.com';
+    passwordController.text = '1q2w3e';
+    // Push prefilled values into LoginBloc after first frame
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        context.read<LoginBloc>().add(const EmailEvent('quezzylearning@gmail.com'));
+        context.read<LoginBloc>().add(const PasswordEvent('1q2w3e'));
+      }
+    });
     super.initState();
   }
 
@@ -83,11 +94,25 @@ class _LoginFormState extends State<_LoginForm> {
             Hero(
               tag: "login_btn",
               child: ElevatedButton(
-                onPressed: () {
-                  LoginController(context: context).handleSignIn("email");
-                },
+                onPressed: _submitting
+                    ? null
+                    : () async {
+                        setState(() {
+                          _submitting = true;
+                        });
+                        try {
+                          await LoginController(context: context)
+                              .handleSignIn("email");
+                        } finally {
+                          if (mounted) {
+                            setState(() {
+                              _submitting = false;
+                            });
+                          }
+                        }
+                      },
                 child: Text(
-                  "Login".toUpperCase(),
+                  (_submitting ? "Logging in..." : "Login").toUpperCase(),
                 ),
               ),
             ),

@@ -4,7 +4,6 @@ import 'package:quezzy_app/core/bloc/language/language_bloc.dart';
 import 'package:quezzy_app/core/constant/app_dimensions.dart';
 import 'package:quezzy_app/features/reusable/widgets/custom_app_bar.dart';
 import 'package:quezzy_app/features/reusable/widgets/custom_icon_button.dart';
-import 'package:quezzy_app/features/reusable/widgets/default_app_bar.dart';
 
 class InfoScreen extends StatefulWidget {
   const InfoScreen({Key? key}) : super(key: key);

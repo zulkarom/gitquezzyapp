@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quezzy_app/features/reusable/widgets/taplus_loader.dart';
 import 'package:lottie/lottie.dart';
@@ -81,8 +82,16 @@ class _ScaffoldState extends State<_Scaffold> with TickerProviderStateMixin {
                 animate: true, onLoaded: (composition) {
               _controller
                 ..duration = composition.duration
-                ..forward().whenComplete(() => Navigator.of(context)
-                    .pushNamedAndRemoveUntil("/welcome", (route) => false));
+                ..forward().whenComplete(() {
+                  // Skip welcome screen on web
+                  if (kIsWeb) {
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        "/login", (route) => false);
+                  } else {
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        "/welcome", (route) => false);
+                  }
+                });
             }),
           );
         },

@@ -1,14 +1,19 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quezzy_app/core/constant/colors.dart';
 import 'package:quezzy_app/features/home/screens/home_screen.dart';
+import 'package:quezzy_app/features/home/bloc/home_bloc.dart';
 import 'package:quezzy_app/features/performance/screens/performance_screen.dart';
 import 'package:quezzy_app/features/profile/screens/profile_screen.dart';
 import 'package:quezzy_app/features/settings/screens/setting_screen.dart';
 
 Widget buildPage(int index) {
   List<Widget> widget = [
-    const HomeScreen(),
+    BlocProvider<HomeBloc>(
+      create: (_) => HomeBloc(),
+      child: const HomeScreen(),
+    ),
     const PerformanceScreen(),
     const ProfileScreen(),
     const SettingScreen(),

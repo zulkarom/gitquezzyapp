@@ -29,6 +29,7 @@ import 'package:quezzy_app/features/welcome/screens/welcome_screen.dart';
 import 'package:quezzy_app/routes/routes.dart';
 import '../features/application/application_page.dart';
 import '../features/application/bloc/app_bloc.dart';
+import '../features/home/bloc/home_bloc.dart';
 import '../features/auth/bloc/register/register_bloc.dart';
 import '../features/messages/chat/bloc/chat_blocs.dart';
 import '../features/messages/chat/screens/chat_screen.dart';
@@ -93,8 +94,12 @@ class AppPages {
       PageEntity(
         route: AppRoutes.APPLICATION,
         page: const ApplicationPage(),
-        bloc: BlocProvider(
-          create: (_) => AppBloc(),
+        bloc: MultiBlocProvider(
+          providers: [
+            BlocProvider<AppBloc>(create: (_) => AppBloc()),
+            BlocProvider<HomeBloc>(create: (_) => HomeBloc()),
+          ],
+          child: const SizedBox.shrink(),
         ),
       ),
       PageEntity(

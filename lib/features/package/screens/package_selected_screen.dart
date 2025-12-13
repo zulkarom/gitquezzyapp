@@ -74,7 +74,11 @@ class _PackageSelectedScreenState extends State<PackageSelectedScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Column(
+        body: Align(
+          alignment: Alignment.topCenter,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 500),
+            child: Column(
           children: [
             CustomAppBar(
               title: 'Your Packages',
@@ -226,6 +230,8 @@ class _PackageSelectedScreenState extends State<PackageSelectedScreen> {
               },
             ),
           ],
+            ),
+          ),
         ),
       ),
     );
