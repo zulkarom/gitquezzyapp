@@ -243,17 +243,26 @@ class _HomeScaffoldState extends State<_HomeScaffold> {
                             ),
                           ),
                         ),
-                        const Padding(
-                          padding: EdgeInsets.only(left: 3, bottom: 0),
-                          child: Text(
-                            'Nama Pakej',
-                            style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 1,
-                              wordSpacing: 2,
-                              color: Colors.white,
-                            ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 3, bottom: 0),
+                          child: BlocBuilder<AppBloc, AppState>(
+                            builder: (context, appState) {
+                              final pkg = (appState.packageName.isNotEmpty
+                                      ? appState.packageName
+                                      : Global.storageService
+                                          .getPackageName())
+                                  .trim();
+                              return Text(
+                                pkg.isNotEmpty ? pkg : 'Nama Pakej',
+                                style: const TextStyle(
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w600,
+                                  letterSpacing: 1,
+                                  wordSpacing: 2,
+                                  color: Colors.white,
+                                ),
+                              );
+                            },
                           ),
                         ),
                         SizedBox(height: AppDimension().kThirtyTwoScreenHeight),
@@ -339,19 +348,12 @@ class _HomeScaffoldState extends State<_HomeScaffold> {
                         ],
                       ),
                       SizedBox(height: AppDimension().kEightScreenHeight),
-                      GridView.builder(
+                      ListView.separated(
                         itemCount: state.subjectItem?.length ?? 0,
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          childAspectRatio:
-                              (MediaQuery.of(context).size.height - 250) /
-                                  (4 * 240),
-                          mainAxisSpacing: 10,
-                          crossAxisSpacing: 10,
-                        ),
-                        itemBuilder: ((context, index) {
+                        separatorBuilder: (context, _) => const SizedBox(height: 12),
+                        itemBuilder: (context, index) {
                           final subject = state.subjectItem![index];
                           return InkWell(
                             onTap: () {
@@ -463,7 +465,7 @@ class _HomeScaffoldState extends State<_HomeScaffold> {
                               ),
                             ),
                           );
-                        }),
+                        },
                       ),
                       SizedBox(height: AppDimension().kTwelveScreenHeight),
                     ]),

@@ -8,6 +8,7 @@ import '../../../core/constant/constants.dart';
 import '../../../global.dart';
 import '../../../routes/routes.dart';
 import '../../reusable/widgets/custom_app_bar.dart';
+import '../../application/bloc/app_bloc.dart';
 import '../../reusable/widgets/custom_icon_button.dart';
 import '../../reusable/widgets/dotted_box.dart';
 import '../bloc/package_bloc.dart';
@@ -195,6 +196,12 @@ class _PackageSelectedScreenState extends State<PackageSelectedScreen> {
                                                 .elementAt(packageIndex)
                                                 .package_id));
                                         Global.storageService.setString(
+                                            AppConstants.STORAGE_PACKAGE_NAME,
+                                            state.subscribeItem
+                                                    .elementAt(packageIndex)
+                                                    .name ??
+                                                '');
+                                        Global.storageService.setString(
                                             AppConstants.STORAGE_STUDENT_ID,
                                             jsonEncode(student!["id"]));
                                         if (student!["studentItem"] != null) {
@@ -208,6 +215,12 @@ class _PackageSelectedScreenState extends State<PackageSelectedScreen> {
                                         Navigator.of(context).pushNamed(
                                           AppRoutes.APPLICATION,
                                         );
+                                        // notify app about package change for live header update
+                                        context.read<AppBloc>().add(
+                                            PackageChanged(state.subscribeItem
+                                                    .elementAt(packageIndex)
+                                                    .name ??
+                                                ''));
                                       },
                                       child: subscribeGrid(
                                           state.subscribeItem[packageIndex],

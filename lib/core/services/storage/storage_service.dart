@@ -61,6 +61,11 @@ class StorageService {
     return _prefs.getString(AppConstants.STORAGE_PACKAGE_ID) ?? "";
   }
 
+  //Get package name
+  String getPackageName() {
+    return _prefs.getString(AppConstants.STORAGE_PACKAGE_NAME) ?? "";
+  }
+
   //Get student id
   String getStudentId() {
     return _prefs.getString(AppConstants.STORAGE_STUDENT_ID) ?? "";

@@ -132,6 +132,9 @@ class SideMenu extends StatelessWidget {
                                     AppConstants.STORAGE_PACKAGE_ID,
                                     jsonEncode(subscribeItem.package_id));
                                 Global.storageService.setString(
+                                    AppConstants.STORAGE_PACKAGE_NAME,
+                                    subscribeItem.name ?? '');
+                                Global.storageService.setString(
                                     AppConstants.STORAGE_STUDENT_ID,
                                     jsonEncode(
                                         Global.storageService.getStudentId()));

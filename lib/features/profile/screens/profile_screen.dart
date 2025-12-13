@@ -234,6 +234,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             jsonEncode(
                                                 subscribeItem.package_id));
                                         Global.storageService.setString(
+                                            AppConstants.STORAGE_PACKAGE_NAME,
+                                            subscribeItem.name ?? '');
+                                        Global.storageService.setString(
                                             AppConstants.STORAGE_STUDENT_ID,
                                             jsonEncode(Global.storageService
                                                 .getStudentId()));

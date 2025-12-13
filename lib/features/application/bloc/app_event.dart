@@ -8,3 +8,8 @@ class TriggerAppEvent extends AppEvent {
   final int index;
   const TriggerAppEvent(this.index) : super();
 }
+
+class PackageChanged extends AppEvent {
+  final String packageName;
+  const PackageChanged(this.packageName) : super();
+}

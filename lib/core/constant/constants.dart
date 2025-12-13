@@ -39,6 +39,7 @@ class AppConstants {
       'assets/images/others/png/profile.png';
   static const String STORAGE_STUDENT_ID = 'student_id';
   static const String STORAGE_PACKAGE_ID = 'package_id';
+  static const String STORAGE_PACKAGE_NAME = 'package_name';
 
   static const String STORAGE_TOPIC_KEY = 'topic_key';
   static const String STORAGE_STUDENT_PROFILE_KEY = 'student_profile_key';
