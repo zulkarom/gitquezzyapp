@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quezzy_app/core/models/answer/answercontent.dart';
 import 'package:quezzy_app/core/models/entities.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:uuid/uuid.dart';
 import '../../../core/api/question_api.dart';
-import '../../../core/models/answer/ans.dart';
 import '../../../global.dart';
 import '../bloc/question_bloc.dart';
 import '../bloc/question_event.dart';

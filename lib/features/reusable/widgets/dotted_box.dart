@@ -19,7 +19,7 @@ class DottedBox extends StatelessWidget {
         ),
       ),
       child: Material(
-        color: Theme.of(context).colorScheme.background,
+        color: Theme.of(context).colorScheme.surface,
         child: InkWell(
           onTap: onTap,
           child: Container(

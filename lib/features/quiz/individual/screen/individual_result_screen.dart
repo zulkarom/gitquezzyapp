@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:quezzy_app/core/constant/colors.dart';
 import 'package:quezzy_app/core/constant/constants.dart';
 import 'package:quezzy_app/features/level/screens/level_screen.dart';
 import 'package:quezzy_app/features/question/widget/circular_painter.dart';
 import 'package:quezzy_app/features/quiz/individual/bloc/individual_result_bloc.dart';
 import 'package:quezzy_app/features/quiz/individual/controller/individual_result_controller.dart';
-import 'package:quezzy_app/features/topic/controller/topic_controller.dart';
 import '../../../../core/constant/app_dimensions.dart';
 import '../../../../core/models/entities.dart';
 import '../../../reusable/widgets/custom_app_bar.dart';
@@ -40,6 +40,7 @@ class __ResultScaffoldState extends State<_ResultScaffold> {
   late TopicItem topicItem;
   late String docId;
   late IndividualResultController _individualResultController;
+  bool _postedLevelResult = false;
 
   @override
   void didChangeDependencies() {
@@ -77,15 +78,14 @@ class __ResultScaffoldState extends State<_ResultScaffold> {
                       padding: const EdgeInsets.only(left: 10),
                       child: GestureDetector(
                           onTap: () {
-                            Navigator.pop(context);
-                            Navigator.pop(context);
-                            Navigator.push(
-                              context,
+                            EasyLoading.dismiss();
+                            Navigator.of(context).pushAndRemoveUntil(
                               MaterialPageRoute(
                                 builder: (context) {
                                   return LevelScreen(subjectItem, topicItem);
                                 },
                               ),
+                              (route) => false,
                             );
 
                             // showDialog(
@@ -105,29 +105,6 @@ class __ResultScaffoldState extends State<_ResultScaffold> {
                     ),
                   )
                 ],
-                ending: [
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 10),
-                      child: GestureDetector(
-                          onTap: () {
-                            showDialog(
-                              context: context,
-                              builder: (_) {
-                                return Dialog(
-                                  backgroundColor: kLightAccent,
-                                  child: SizedBox(
-                                      width: 300 / 2, // Set the desired width
-                                      height: 200 / 2, // Set the desired height
-                                      child: showTextDialog(context, 1)),
-                                );
-                              },
-                            );
-                          },
-                          child: reusableText("Next")),
-                    ),
-                  )
-                ],
               ),
               BlocListener<IndividualResultBloc, IndividualResultState>(
                 listener: (context, state) {
@@ -138,6 +115,13 @@ class __ResultScaffoldState extends State<_ResultScaffold> {
                         state.answer,
                         state.starScore,
                         state.totalScore.toDouble());
+
+                    if (!_postedLevelResult) {
+                      _postedLevelResult = true;
+                      IndividualResultController(context: context)
+                          .asyncPostLevelResultData(
+                              state.totalScore, levelItem);
+                    }
                   }
                 },
                 child: BlocBuilder<IndividualResultBloc, IndividualResultState>(
@@ -145,10 +129,6 @@ class __ResultScaffoldState extends State<_ResultScaffold> {
                     // print("sdfdsfdsfdsfdsfdsfewfewew");
                     // print(state.question!.length);
                     if (state is DoneLoadingMyResultsStates) {
-                      IndividualResultController(context: context)
-                          .asyncPostLevelResultData(
-                              state.totalScore, levelItem);
-
                       return Expanded(
                         child: Column(
                           children: [

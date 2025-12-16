@@ -14,8 +14,6 @@ import 'package:quezzy_app/features/parent_profile/screens/parent_profile_update
 import 'package:quezzy_app/features/parent_profile/widgets/other_card.dart';
 import 'package:quezzy_app/features/reusable/widgets/custom_snack_bar.dart';
 import 'package:quezzy_app/global.dart';
-import 'package:quezzy_app/utils/confirmation_dialog.dart';
-import 'package:quezzy_app/utils/confirmation_widget.dart';
 import 'package:quezzy_app/utils/show_snackbar.dart';
 
 import '../../reusable/widgets/custom_app_bar.dart';

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'features/l10n/app_localizations.dart';
@@ -10,7 +9,6 @@ import 'package:quezzy_app/core/bloc/data/cubit/data_cubit.dart';
 import 'package:quezzy_app/features/parent_profile/bloc/parent_profile_bloc.dart';
 import 'package:quezzy_app/features/profile/bloc/profile_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:timezone/data/latest.dart' as tz;
 

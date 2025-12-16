@@ -32,11 +32,30 @@ class _IndividualQuizScreenState extends State<IndividualQuizScreen> {
   @override
   void didChangeDependencies() {
     if (!_initialized) {
-      final data = ModalRoute.of(context)!.settings.arguments as Map;
-      subjectItem = data["subjectItem"];
-      levelItem = data["levelItem"];
-      topicItem = data["topicItem"];
-      answerDocId = data["answer_doc_id"];
+      final route = ModalRoute.of(context);
+      final args = route?.settings.arguments;
+      if (args is! Map) {
+        _initialized = true;
+        return;
+      }
+      data = args;
+      final maybeSubject = args["subjectItem"];
+      final maybeLevel = args["levelItem"];
+      final maybeTopic = args["topicItem"];
+      final maybeAnswerDocId = args["answer_doc_id"];
+
+      if (maybeSubject is SubjectItem) {
+        subjectItem = maybeSubject;
+      }
+      if (maybeLevel is LevelItem) {
+        levelItem = maybeLevel;
+      }
+      if (maybeTopic is TopicItem) {
+        topicItem = maybeTopic;
+      }
+      if (maybeAnswerDocId is String) {
+        answerDocId = maybeAnswerDocId;
+      }
 
       _individualQuizController = IndividualQuizController(context: context);
       _individualQuizController.init();
@@ -51,17 +70,18 @@ class _IndividualQuizScreenState extends State<IndividualQuizScreen> {
     return SafeArea(
       child: BlocBuilder<IndividualQuizBloc, IndividualQuizState>(
         builder: (context, state) {
+          final l10n = AppLocalizations.of(context);
           return Scaffold(
               body: Column(
             children: [
               CustomAppBar(
-                title: AppLocalizations.of(context)!.question,
+                title: l10n?.question ?? '',
                 leading: [
                   Center(
                     child: CustomIconButton(
                       onTap: () {},
                       child: Icon(
-                        Icons.arrow_back_ios_rounded,
+                        Icons.arrow_back,
                         size: AppDimension().kTwentyScreenPixel,
                         color: Theme.of(context)
                             .appBarTheme
@@ -157,12 +177,14 @@ class _IndividualQuizScreenState extends State<IndividualQuizScreen> {
   _answerList() {
     return BlocBuilder<IndividualQuizBloc, IndividualQuizState>(
       builder: (context, state) {
+        final questions = state.question ?? const <Question>[];
+        final currentIndex = state.currentQuestionIndex ?? 0;
+        if (questions.isEmpty || currentIndex < 0 || currentIndex >= questions.length) {
+          return const SizedBox.shrink();
+        }
+        final items = questions[currentIndex].questionItems ?? const <QuestionItem>[];
         return Column(
-          children: state.question![state.currentQuestionIndex!].questionItems!
-              .map(
-                (e) => _answerButton(e),
-              )
-              .toList(),
+          children: items.map((e) => _answerButton(e)).toList(),
         );
       },
     );
@@ -323,7 +345,9 @@ class _IndividualQuizScreenState extends State<IndividualQuizScreen> {
       // buildWhen: (previous, current) => current is DoneLoadingMyQuestionsStates,
       builder: (context, state) {
         bool isLastQuestion = false;
-        if (state.currentQuestionIndex == state.question!.length - 1) {
+        final questionLength = state.question?.length ?? 0;
+        final currentIndex = state.currentQuestionIndex ?? 0;
+        if (questionLength > 0 && currentIndex == questionLength - 1) {
           isLastQuestion = true;
         }
         return SizedBox(

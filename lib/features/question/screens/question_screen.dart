@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quezzy_app/core/models/entities.dart';
-import 'package:quezzy_app/features/level/screens/level_screen.dart';
 import 'package:quezzy_app/features/question/bloc/question_bloc.dart';
 import 'package:quezzy_app/features/question/bloc/question_event.dart';
 import 'package:quezzy_app/features/question/widget/question_widget.dart';
@@ -57,17 +56,10 @@ class _QuestionScreenState extends State<QuestionScreen> {
               Center(
                 child: CustomIconButton(
                   onTap: () {
-                    // Navigator.pushReplacement(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) {
-                    //       return LevelScreen(topicItem);
-                    //     },
-                    //   ),
-                    // );
+                    Navigator.of(context).pop();
                   },
                   child: Icon(
-                    Icons.arrow_back_ios_rounded,
+                    Icons.arrow_back,
                     size: AppDimension().kTwentyScreenPixel,
                     color:
                         Theme.of(context).appBarTheme.actionsIconTheme!.color,

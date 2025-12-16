@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:quezzy_app/features/reusable/widgets/flutter_toast.dart';
 import '../../../core/constant/app_dimensions.dart';
 import '../../../core/constant/constants.dart';
 import '../../../global.dart';
@@ -101,7 +100,7 @@ class _PackageSelectedScreenState extends State<PackageSelectedScreen> {
                           }
                         },
                         child: Icon(
-                          Icons.arrow_back_ios_rounded,
+                          Icons.arrow_back,
                           size: AppDimension().kTwentyScreenPixel,
                           color: Theme.of(context)
                               .appBarTheme

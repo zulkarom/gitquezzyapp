@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quezzy_app/features/reusable/widgets/flutter_toast.dart';
 import 'package:quezzy_app/features/reusable/widgets/parent_password_field.dart';
 import 'package:quezzy_app/features/student/controller/student_controller.dart';
-import 'package:quezzy_app/features/student/screens/forget_pin_confirmation.dart';
 import 'package:quezzy_app/features/student/widgets/student_widget.dart';
 import '../../../core/constant/app_dimensions.dart';
 import '../../../core/constant/colors.dart';

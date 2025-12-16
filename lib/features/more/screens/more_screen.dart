@@ -1,13 +1,12 @@
 
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quezzy_app/core/constant/app_dimensions.dart';
 import 'package:quezzy_app/core/constant/colors.dart';
-import 'package:quezzy_app/core/constant/constants.dart';
 import 'package:quezzy_app/features/more/bloc/more_bloc.dart';
 import 'package:quezzy_app/features/more/controllers/more_controller.dart';
-import 'package:quezzy_app/features/more/widgets/password_field.dart';
 import 'package:quezzy_app/features/quiz_room/screens/invitation_list_screen.dart';
 import 'package:quezzy_app/features/reusable/widgets/custom_app_bar.dart';
 import 'package:quezzy_app/features/reusable/widgets/custom_icon_button.dart';
@@ -43,12 +42,10 @@ class _MoreScreenState extends State<MoreScreen> {
                 Center(
                   child: CustomIconButton(
                     onTap: () {
-                      Navigator.of(context).pushNamed(
-                        AppRoutes.APPLICATION,
-                      );
+                      Navigator.of(context).pop();
                     },
                     child: Icon(
-                      Icons.arrow_back_ios_rounded,
+                      Icons.arrow_back,
                       size: AppDimension().kTwentyScreenPixel,
                       color:
                           Theme.of(context).appBarTheme.actionsIconTheme!.color,

@@ -46,18 +46,18 @@ class ChatController {
         .get();
     if (messageRes.data() != null) {
       var item = messageRes.data()!;
-      int to_msg_num = item.to_msg_num == null ? 0 : item.to_msg_num!;
-      int from_msg_num = item.from_msg_num == null ? 0 : item.from_msg_num!;
+      int toMsgNum = item.to_msg_num == null ? 0 : item.to_msg_num!;
+      int fromMsgNum = item.from_msg_num == null ? 0 : item.from_msg_num!;
       if (item.from_token == userProfile.token) {
-        to_msg_num = 0;
+        toMsgNum = 0;
       } else {
-        from_msg_num = 0;
+        fromMsgNum = 0;
       }
 
       await db
           .collection("message")
           .doc(docId)
-          .update({"to_msg_num": to_msg_num, "from_msg_num": from_msg_num});
+          .update({"to_msg_num": toMsgNum, "from_msg_num": fromMsgNum});
     }
   }
 
@@ -235,19 +235,19 @@ class ChatController {
       if (messageRes.data() != null) {
         var item = messageRes.data()!;
 
-        int to_msg_num = item.to_msg_num == null ? 0 : item.to_msg_num!;
-        int from_msg_num = item.from_msg_num == null ? 0 : item.from_msg_num!;
+        int toMsgNum = item.to_msg_num == null ? 0 : item.to_msg_num!;
+        int fromMsgNum = item.from_msg_num == null ? 0 : item.from_msg_num!;
         if (item.from_token == userProfile.token) {
           //sender message count
-          from_msg_num = from_msg_num + 1;
+          fromMsgNum = fromMsgNum + 1;
         } else {
           // the other person's message count
-          to_msg_num = to_msg_num + 1;
+          toMsgNum = toMsgNum + 1;
         }
 
         await db.collection("message").doc(docId).update({
-          "to_msg_num": to_msg_num,
-          "from_msg_num": from_msg_num,
+          "to_msg_num": toMsgNum,
+          "from_msg_num": fromMsgNum,
           "last_time": Timestamp.now(),
           "last_msg": sendContent
         });

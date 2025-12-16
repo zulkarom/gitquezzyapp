@@ -12,7 +12,7 @@ class PasswordField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _Content();
+    return const _Content();
   }
 }
 

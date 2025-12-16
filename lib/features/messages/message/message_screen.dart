@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -61,7 +60,7 @@ class _MessagesScaffoldState extends State<_MessagesScaffold> {
                         Navigator.pop(context);
                       },
                       child: Icon(
-                        Icons.arrow_back_ios_rounded,
+                        Icons.arrow_back,
                         size: AppDimension().kTwentyScreenPixel,
                         color: Theme.of(context)
                             .appBarTheme

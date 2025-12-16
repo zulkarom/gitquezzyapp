@@ -4,7 +4,6 @@ import 'package:quezzy_app/core/constant/constants.dart';
 import 'package:quezzy_app/features/parent_profile/bloc/parent_profile_bloc.dart';
 import 'package:quezzy_app/features/parent_profile/controller/parent_profile_controller.dart';
 import 'package:quezzy_app/features/parent_profile/widgets/parent_profile_widget.dart';
-import 'package:quezzy_app/features/profile/widgets/profile_widget.dart';
 import 'package:quezzy_app/features/reusable/widgets/custom_app_bar.dart';
 import 'package:quezzy_app/features/reusable/widgets/custom_icon_button.dart';
 

@@ -368,97 +368,117 @@ class _HomeScaffoldState extends State<_HomeScaffold> {
                             },
                             child: Container(
                               padding: const EdgeInsets.symmetric(
-                                  vertical: 20, horizontal: 10),
+                                  vertical: 12, horizontal: 12),
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
+                                borderRadius: BorderRadius.circular(16),
                                 color: kLightField,
                               ),
-                              child: Column(
+                              child: Row(
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(5),
+                                  Container(
+                                    width: 54,
+                                    height: 54,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Color(0xFF4DB6E2),
+                                    ),
+                                    alignment: Alignment.center,
                                     child: Image.asset(
                                       'assets/images/categories/png/${imgList[index % imgList.length]}.png',
-                                      width: 100,
-                                      height: 100,
+                                      width: 30,
+                                      height: 30,
                                     ),
                                   ),
-                                  SizedBox(
-                                      height: AppDimension().kTenScreenHeight),
-                                  BlocBuilder<LanguageBloc, LanguageState>(
-                                    builder: (context, stateLg) {
-                                      return Text(
-                                        stateLg.language.name == 'eng'
-                                            ? (subject.name_eng ?? '')
-                                            : (subject.name_bm ?? ''),
-                                        style: TextStyle(
-                                          fontSize: 22,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.black.withOpacity(0.6),
+                                  const SizedBox(width: 12),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        BlocBuilder<LanguageBloc, LanguageState>(
+                                          builder: (context, stateLg) {
+                                            return Text(
+                                              stateLg.language.name == 'eng'
+                                                  ? (subject.name_eng ?? '')
+                                                  : (subject.name_bm ?? ''),
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                              style: (Theme.of(context)
+                                                          .textTheme
+                                                          .titleMedium ??
+                                                      const TextStyle())
+                                                  .copyWith(
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.black
+                                                    .withOpacity(0.7),
+                                              ),
+                                            );
+                                          },
                                         ),
-                                      );
-                                    },
-                                  ),
-                                  SizedBox(
-                                      height: AppDimension().kTenScreenHeight),
-                                  Text(
-                                    '${subject.totalTopic ?? 0} Topik',
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.black.withOpacity(0.5),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                      height: AppDimension().kTenScreenHeight),
-                                  Center(
-                                    child: Text(
-                                      "${(subject.progress ?? 0).round()}%",
-                                      style: (Theme.of(context)
-                                                  .textTheme
-                                                  .bodyMedium ??
-                                              const TextStyle())
-                                          .copyWith(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black.withOpacity(0.5),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                      height: AppDimension().kTenScreenHeight),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: List.generate(
-                                      3, // Assuming itemCount is 3
-                                      (starIndex) {
-                                        double starRating = Global
-                                            .starCalculation(((subject.progress ?? 0) / 100));
-                                        //state.subjectItem![index].star!;
-                                        if (starIndex < starRating.floor()) {
-                                          // Fully filled star
-                                          return const Icon(
-                                            Icons.star,
-                                            color: Colors.amber,
-                                            size: 30,
-                                          );
-                                        } else if (starIndex ==
-                                                starRating.floor() &&
-                                            starRating % 1 != 0) {
-                                          // Half-filled star
-                                          return const Icon(
-                                            Icons.star_half,
-                                            color: Colors.amber,
-                                            size: 30,
-                                          );
-                                        } else {
-                                          // Empty star
-                                          return const Icon(
-                                            Icons.star_border,
-                                            color: Colors.grey,
-                                            size: 30,
-                                          );
-                                        }
-                                      },
+                                        const SizedBox(height: 2),
+                                        Text(
+                                          '${subject.totalTopic ?? 0} Topik',
+                                          style: (Theme.of(context)
+                                                      .textTheme
+                                                      .bodySmall ??
+                                                  const TextStyle())
+                                              .copyWith(
+                                            fontWeight: FontWeight.w500,
+                                            color:
+                                                Colors.black.withOpacity(0.55),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 6),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              "${(subject.progress ?? 0).round()}%",
+                                              style: (Theme.of(context)
+                                                          .textTheme
+                                                          .bodySmall ??
+                                                      const TextStyle())
+                                                  .copyWith(
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.black
+                                                    .withOpacity(0.6),
+                                              ),
+                                            ),
+                                            const SizedBox(width: 8),
+                                            ...List.generate(
+                                              3,
+                                              (starIndex) {
+                                                double starRating = Global
+                                                    .starCalculation(((subject.progress ??
+                                                            0) /
+                                                        100));
+                                                if (starIndex <
+                                                    starRating.floor()) {
+                                                  return const Icon(
+                                                    Icons.star,
+                                                    color: Colors.amber,
+                                                    size: 18,
+                                                  );
+                                                } else if (starIndex ==
+                                                        starRating.floor() &&
+                                                    starRating % 1 != 0) {
+                                                  return const Icon(
+                                                    Icons.star_half,
+                                                    color: Colors.amber,
+                                                    size: 18,
+                                                  );
+                                                } else {
+                                                  return const Icon(
+                                                    Icons.star_border,
+                                                    color: Colors.grey,
+                                                    size: 18,
+                                                  );
+                                                }
+                                              },
+                                            ),
+                                          ],
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ],

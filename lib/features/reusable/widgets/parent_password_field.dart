@@ -142,6 +142,5 @@ class _ParentPasswordFieldState extends State<ParentPasswordField> {
         ),
       ),
     );
-    ;
   }
 }

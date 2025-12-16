@@ -6,6 +6,7 @@ import 'package:quezzy_app/features/profile/controllers/profile_controller.dart'
 import 'package:quezzy_app/features/profile/widgets/profile_widget.dart';
 import 'package:quezzy_app/features/reusable/widgets/custom_app_bar.dart';
 import 'package:quezzy_app/features/reusable/widgets/custom_icon_button.dart';
+import 'package:quezzy_app/global.dart';
 
 import '../../../core/constant/app_dimensions.dart';
 import '../../reusable/widgets/custom_input_field.dart';
@@ -42,9 +43,15 @@ class __ContentState extends State<_Content> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    nameController.text = context.read<ProfileBloc>().state.studentItem!.name!;
-    schoolController.text =
-        context.read<ProfileBloc>().state.studentItem!.schoolName!;
+    final profileBloc = context.read<ProfileBloc>();
+    if (profileBloc.state.studentItem == null) {
+      profileBloc.add(
+        TriggerInitialStudentItemEvent(Global.storageService.getStudentProfile()),
+      );
+    }
+    final student = profileBloc.state.studentItem;
+    nameController.text = student?.name ?? '';
+    schoolController.text = student?.schoolName ?? '';
     ProfileController(context: context).initAvatar();
   }
 
@@ -85,12 +92,22 @@ class __ContentState extends State<_Content> {
           BlocListener<ProfileBloc, ProfileState>(
             listener: (context, state) {
               if (state is AvatarUrlState) {
-                state.studentItem!.avatar = state.avatarUrl;
-                ProfileController(context: context).initAvatar();
+                final student = state.studentItem;
+                if (student != null) {
+                  student.avatar = state.avatarUrl;
+                  ProfileController(context: context).initAvatar();
+                }
               }
             },
             child: BlocBuilder<ProfileBloc, ProfileState>(
               builder: (context, state) {
+                final student = state.studentItem;
+                if (student == null) {
+                  return const SizedBox(
+                    height: 200,
+                    child: Center(child: CircularProgressIndicator()),
+                  );
+                }
                 return SizedBox(
                   width: MediaQuery.of(context).size.width,
                   child: Column(
@@ -98,9 +115,9 @@ class __ContentState extends State<_Content> {
                     children: [
                       profileIconAndEditButton(
                         context,
-                        state.studentItem!.avatar == ''
+                        (student.avatar ?? '') == ''
                             ? AppConstants.DEFAULT_STUDENT_AVATAR
-                            : state.studentItem!.avatar!,
+                            : (student.avatar ?? AppConstants.DEFAULT_STUDENT_AVATAR),
                         state.avatarItem,
                       ),
                       SizedBox(
@@ -171,13 +188,13 @@ class __ContentState extends State<_Content> {
                             onPressed: () {
                               ProfileController(context: context)
                                   .asyncPostUpdateStudentData(
-                                state.studentItem!.id!,
+                                student.id ?? 0,
                                 nameController.text,
                                 schoolController.text,
                                 passwordController.text,
-                                state.studentItem!.avatar == ''
+                                (student.avatar ?? '') == ''
                                     ? AppConstants.DEFAULT_STUDENT_AVATAR
-                                    : state.studentItem!.avatar!,
+                                    : (student.avatar ?? AppConstants.DEFAULT_STUDENT_AVATAR),
                               );
                               FocusScope.of(context).unfocus();
                             },

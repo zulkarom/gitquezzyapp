@@ -50,7 +50,7 @@ class AppConstants {
       'assets/images/topics/png/topic.png';
 }
 
-final kTopBorderRadius = BorderRadius.only(
+const kTopBorderRadius = BorderRadius.only(
   topLeft: Radius.circular(20),
   topRight: Radius.circular(20),
 );

@@ -16,7 +16,7 @@ class PageLoadingSpinner extends StatelessWidget {
         borderRadius: BorderRadius.circular(
           AppDimension().kEightScreenPixel,
         ),
-        color: Theme.of(context).colorScheme.background,
+        color: Theme.of(context).colorScheme.surface,
       ),
       child: Center(
         child: ShimmerLoading(

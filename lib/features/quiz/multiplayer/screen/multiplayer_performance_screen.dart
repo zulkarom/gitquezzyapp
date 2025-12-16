@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quezzy_app/features/quiz/multiplayer/controller/performance_controller.dart';
 import 'package:quezzy_app/global.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:sizer/sizer.dart';
 import '../../../../core/bloc/language/language_bloc.dart';
 import '../../../../core/constant/app_dimensions.dart';
 import '../../../../core/models/entities.dart';

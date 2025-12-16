@@ -1,7 +1,7 @@
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quezzy_app/core/models/subscribe.dart';
-import 'package:quezzy_app/global.dart';
 
 
 part 'performance_event.dart';

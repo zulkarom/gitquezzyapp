@@ -112,7 +112,7 @@ class _FriendListScaffoldState extends State<_FriendListScaffold> {
                     ),
                     Expanded(
                       child: ListView.builder(
-                        itemCount: state.friendItem!.length,
+                        itemCount: state.friendItem.length,
                         itemBuilder: (BuildContext context, int index) {
                           return GestureDetector(
                             onTap: () {
@@ -125,14 +125,14 @@ class _FriendListScaffoldState extends State<_FriendListScaffold> {
                                   left: AppDimension().kTwelveScreenWidth,
                                   bottom: AppDimension().kTwelveScreenHeight),
                               child: FriendCard(
-                                friendName: state.friendItem![index].name ?? '',
+                                friendName: state.friendItem[index].name ?? '',
                                 friendDesc:
-                                    state.friendItem![index].schoolName ?? '',
+                                    state.friendItem[index].schoolName ?? '',
                                 image: Image.asset(
-                                  state.friendItem![index].avatar ?? '',
+                                  state.friendItem[index].avatar ?? '',
                                   width: AppDimension().kFortyEightScreenWidth,
                                 ),
-                                btnName: state.friendItem![index].status == 10
+                                btnName: state.friendItem[index].status == 10
                                     ? '    Cancel    '
                                     : 'Invite',
                                 // btnName: state.friendItemOne?.status == null
@@ -141,7 +141,7 @@ class _FriendListScaffoldState extends State<_FriendListScaffold> {
                                 buttonHandler: () {
                                   // print(state.invitedFriendList.length);
                                   _quizRoomController.sendInvitation(
-                                      state.friendItem![index], widget.docId);
+                                      state.friendItem[index], widget.docId);
                                 },
                               ),
                             ),

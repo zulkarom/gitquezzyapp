@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quezzy_app/core/constant/app_dimensions.dart';
-import 'package:quezzy_app/features/auth/screens/login_screen.dart';
 import 'package:quezzy_app/features/parent_application/bloc/app_parent_bloc.dart';
 import 'package:quezzy_app/features/parent_application/controller/app_parent_controller.dart';
-import 'package:quezzy_app/features/reusable/widgets/account_check.dart';
 import '../../reusable/widgets/custom_input_field.dart';
 
 class ApplicationParentPassword extends StatelessWidget {

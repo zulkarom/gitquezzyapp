@@ -168,7 +168,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                                   Colors.grey.withOpacity(0.5),
                                               spreadRadius: 2,
                                               blurRadius: 2,
-                                              offset: Offset(1, 1))
+                                              offset: const Offset(1, 1))
                                         ]),
                                     child:
                                         Image.asset("assets/icons/send2.png"),

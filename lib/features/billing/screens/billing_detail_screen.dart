@@ -4,7 +4,6 @@ import 'package:quezzy_app/core/bloc/language/language_bloc.dart';
 import 'package:quezzy_app/core/constant/app_dimensions.dart';
 import 'package:quezzy_app/features/reusable/widgets/custom_app_bar.dart';
 import 'package:quezzy_app/features/reusable/widgets/custom_icon_button.dart';
-import 'package:quezzy_app/features/reusable/widgets/default_app_bar.dart';
 
 class BillingDetailScreen extends StatefulWidget {
   const BillingDetailScreen({Key? key}) : super(key: key);
@@ -34,7 +33,7 @@ class _BillingDetailScreenState extends State<BillingDetailScreen> {
                           Navigator.of(context).pop();
                         },
                         child: Icon(
-                          Icons.arrow_back_ios_rounded,
+                          Icons.arrow_back,
                           size: AppDimension().kTwentyScreenPixel,
                           color: Theme.of(context)
                               .appBarTheme

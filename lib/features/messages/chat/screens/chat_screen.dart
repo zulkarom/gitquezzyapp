@@ -63,7 +63,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           Navigator.pop(context);
                         },
                         child: Icon(
-                          Icons.arrow_back_ios_rounded,
+                          Icons.arrow_back,
                           size: AppDimension().kTwentyScreenPixel,
                           color: Theme.of(context)
                               .appBarTheme
@@ -276,7 +276,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                                     .withOpacity(0.5),
                                                 spreadRadius: 2,
                                                 blurRadius: 2,
-                                                offset: Offset(1, 1))
+                                                offset: const Offset(1, 1))
                                           ]),
                                       child: Image.asset(
                                           "assets/images/others/icons/send2.png"),

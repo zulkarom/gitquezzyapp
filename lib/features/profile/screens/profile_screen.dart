@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quezzy_app/core/constant/colors.dart';
 import 'package:quezzy_app/core/constant/constants.dart';
@@ -27,6 +26,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void didChangeDependencies() {
     MoreController(context: context).init();
+    final profileBloc = context.read<ProfileBloc>();
+    if (profileBloc.state.studentItem == null) {
+      profileBloc.add(
+        TriggerInitialStudentItemEvent(Global.storageService.getStudentProfile()),
+      );
+    }
     super.didChangeDependencies();
   }
 
@@ -37,10 +42,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     return Scaffold(
       // backgroundColor: Colors.transparent,
-      appBar: AppBar(),
       body: Column(
         children: [
-          const CustomAppBar(
+          CustomAppBar(
             title: 'Profil',
           ),
           BlocListener<ProfileBloc, ProfileState>(
@@ -49,6 +53,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             },
             child: BlocBuilder<ProfileBloc, ProfileState>(
               builder: (context, state) {
+                final student = state.studentItem;
                 return Expanded(
                   child: ListView(
                     children: [
@@ -81,10 +86,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           child: Column(
                                             children: [
                                               const SizedBox(
-                                                height: 90,
+                                                height: 78,
                                               ),
                                               Text(
-                                                state.studentItem!.name!,
+                                                student?.name ?? '',
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .headlineSmall!
@@ -98,11 +103,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               const SizedBox(
                                                 height: 15,
                                               ),
-                                              state.studentItem!.schoolName !=
+                                              student?.schoolName !=
                                                       null
                                                   ? Text(
-                                                      state.studentItem!
-                                                              .schoolName ??
+                                                      student?.schoolName ??
                                                           '',
                                                       style: Theme.of(context)
                                                           .textTheme
@@ -116,7 +120,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                           ),
                                                     )
                                                   : const SizedBox.shrink(),
-                                              state.studentItem!.schoolName !=
+                                              student?.schoolName !=
                                                       null
                                                   ? const SizedBox(
                                                       height: 20,
@@ -149,39 +153,48 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                       "Kemaskini Profil"),
                                                 ),
                                               ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.fromLTRB(
+                                                        10, 0, 10, 10),
+                                                child: SizedBox(
+                                                  width: double.infinity,
+                                                  child: OutlinedButton(
+                                                    style: OutlinedButton
+                                                        .styleFrom(
+                                                      shape:
+                                                          const StadiumBorder(),
+                                                      side: BorderSide(
+                                                        color: Theme.of(context)
+                                                            .primaryColor,
+                                                      ),
+                                                      foregroundColor: Theme.of(
+                                                              context)
+                                                          .primaryColor,
+                                                    ),
+                                                    onPressed: () {
+                                                      Navigator.of(context)
+                                                          .maybePop();
+                                                    },
+                                                    child: const Text(
+                                                        'Back to Parent Page'),
+                                                  ),
+                                                ),
+                                              ),
                                             ],
                                           ),
                                         ),
                                       ),
-                                      GestureDetector(
-                                        onTap: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) {
-                                                return const ProfileUpdateScreen();
-                                              },
-                                            ),
-                                          );
-                                        },
-                                        child: Positioned(
-                                          top: 110,
-                                          right: 20,
-                                          child: Icon(
-                                            Icons.settings,
-                                            color: Colors.grey[700],
-                                            size: 30,
-                                          ),
-                                        ),
-                                      ),
                                       Positioned(
-                                        top: 0,
+                                        top: 18,
                                         left: 0,
                                         right: 0,
                                         child: Center(
                                           child: Container(
-                                            child: _buildStudentAvatar(
-                                                innerWidth, state),
+                                            child: student != null
+                                                ? _buildStudentAvatar(
+                                                    innerWidth, state)
+                                                : const SizedBox.shrink(),
                                           ),
                                         ),
                                       ),
@@ -294,10 +307,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ? AppConstants.DEFAULT_STUDENT_AVATAR
         : avatarPath;
 
-    return Image.asset(
-      effectivePath,
-      width: innerWidth * 0.45,
-      fit: BoxFit.fitWidth,
+    final double size = (innerWidth * 0.28).clamp(80.0, 110.0);
+
+    return Container(
+      width: size,
+      height: size,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        border: Border.all(
+          color: Colors.white,
+          width: 3,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 12,
+            offset: const Offset(0, 6),
+          )
+        ],
+      ),
+      child: ClipOval(
+        child: Image.asset(
+          effectivePath,
+          fit: BoxFit.cover,
+        ),
+      ),
     );
   }
 }

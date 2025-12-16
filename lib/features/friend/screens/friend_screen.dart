@@ -49,7 +49,7 @@ class _FriendScreenState extends State<FriendScreen> {
                           Navigator.of(context).pop();
                         },
                         child: Icon(
-                          Icons.arrow_back_ios_rounded,
+                          Icons.arrow_back,
                           size: AppDimension().kTwentyScreenPixel,
                           color: Theme.of(context)
                               .appBarTheme

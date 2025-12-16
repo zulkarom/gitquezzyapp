@@ -1,6 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quezzy_app/core/models/entities.dart';
-import 'package:uuid/uuid.dart';
 
 import 'question_event.dart';
 import 'question_state.dart';

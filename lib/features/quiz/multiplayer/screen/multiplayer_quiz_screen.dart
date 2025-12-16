@@ -98,7 +98,7 @@ class _MultiplayerQuizScreenState extends State<MultiplayerQuizScreen> {
                         child: CustomIconButton(
                           onTap: () {},
                           child: Icon(
-                            Icons.arrow_back_ios_rounded,
+                            Icons.arrow_back,
                             size: AppDimension().kTwentyScreenPixel,
                             color: Theme.of(context)
                                 .appBarTheme

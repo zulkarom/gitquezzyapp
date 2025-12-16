@@ -55,7 +55,7 @@ class __ForgotPassFormState extends State<_ForgotPassForm> {
 
   @override
   Widget build(BuildContext context) {
-    final _auth = AuthService();
+    final auth = AuthService();
     return Form(
       child: Column(
         children: [

@@ -16,7 +16,6 @@ final Map<AppTheme, ThemeData> kAppThemeData = {
     primaryColor: kDarkPrimary,
     scaffoldBackgroundColor: kDarkBg,
     canvasColor: kDarkCanvas,
-    useMaterial3: true,
     textTheme: GoogleFonts.ubuntuTextTheme(
       const TextTheme().copyWith(
         displayLarge: TextStyle(
@@ -56,20 +55,20 @@ final Map<AppTheme, ThemeData> kAppThemeData = {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-        elevation: MaterialStateProperty.all(0),
-        minimumSize: MaterialStateProperty.all(
+        elevation: WidgetStateProperty.all(0),
+        minimumSize: WidgetStateProperty.all(
           Size(double.infinity, 56.h),
         ),
-        shape: MaterialStateProperty.all(
+        shape: WidgetStateProperty.all(
           const StadiumBorder(),
         ),
-        foregroundColor: MaterialStateProperty.all(
+        foregroundColor: WidgetStateProperty.all(
           kDarkTextColor,
         ),
-        backgroundColor: MaterialStateProperty.all(
+        backgroundColor: WidgetStateProperty.all(
           kDarkPrimary,
         ),
-        textStyle: MaterialStateProperty.all(
+        textStyle: WidgetStateProperty.all(
           TextStyle(
             fontSize: 16.sp,
             color: kDarkTextColor,
@@ -80,8 +79,8 @@ final Map<AppTheme, ThemeData> kAppThemeData = {
     ),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
-        foregroundColor: MaterialStateProperty.all(kDarkPrimary),
-        textStyle: MaterialStateProperty.all(
+        foregroundColor: WidgetStateProperty.all(kDarkPrimary),
+        textStyle: WidgetStateProperty.all(
           TextStyle(
             fontSize: 16.sp,
             color: kDarkPrimary,
@@ -156,12 +155,11 @@ final Map<AppTheme, ThemeData> kAppThemeData = {
     ),
     colorScheme: const ColorScheme.dark()
         .copyWith(
-          background: kDarkPlaceholder,
           surface: kDarkPlaceholderText,
           primary: kDarkPrimary,
           secondary: kDarkAccent,
         )
-        .copyWith(background: kDarkPlaceholder)
+        .copyWith(surface: kDarkPlaceholder)
         .copyWith(error: kDarkError),
   ),
   AppTheme.light: ThemeData.light().copyWith(
@@ -169,7 +167,6 @@ final Map<AppTheme, ThemeData> kAppThemeData = {
     scaffoldBackgroundColor: kLightBg,
     canvasColor: kLightCanvas,
     splashColor: kLightPrimary.withOpacity(0.1),
-    useMaterial3: true,
     textTheme: GoogleFonts.ubuntuTextTheme(
       const TextTheme().copyWith(
         displayLarge: TextStyle(
@@ -209,20 +206,20 @@ final Map<AppTheme, ThemeData> kAppThemeData = {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-        elevation: MaterialStateProperty.all(5),
-        minimumSize: MaterialStateProperty.all(
+        elevation: WidgetStateProperty.all(5),
+        minimumSize: WidgetStateProperty.all(
           Size(double.infinity, 56.h),
         ),
-        shape: MaterialStateProperty.all(
+        shape: WidgetStateProperty.all(
           const StadiumBorder(),
         ),
-        foregroundColor: MaterialStateProperty.all(
+        foregroundColor: WidgetStateProperty.all(
           kLightBg,
         ),
-        backgroundColor: MaterialStateProperty.all(
+        backgroundColor: WidgetStateProperty.all(
           kLightPrimary,
         ),
-        textStyle: MaterialStateProperty.all(
+        textStyle: WidgetStateProperty.all(
           TextStyle(
             fontSize: 16.sp,
             color: kLightBg,
@@ -247,8 +244,8 @@ final Map<AppTheme, ThemeData> kAppThemeData = {
     ),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
-        foregroundColor: MaterialStateProperty.all(kLightPrimary),
-        textStyle: MaterialStateProperty.all(
+        foregroundColor: WidgetStateProperty.all(kLightPrimary),
+        textStyle: WidgetStateProperty.all(
           TextStyle(
             fontSize: 14.sp,
             color: kLightPrimary,
@@ -333,12 +330,11 @@ final Map<AppTheme, ThemeData> kAppThemeData = {
     ),
     colorScheme: const ColorScheme.light()
         .copyWith(
-          background: kLightPlaceholder,
           surface: kLightPlaceholderText,
           primary: kLightPrimary,
           secondary: kLightAccent,
         )
-        .copyWith(background: kLightPlaceholder)
+        .copyWith(surface: kLightPlaceholder)
         .copyWith(error: kLightError),
   ),
 };

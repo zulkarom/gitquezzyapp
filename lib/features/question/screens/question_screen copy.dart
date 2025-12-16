@@ -34,7 +34,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                     Navigator.of(context).pop();
                   },
                   child: Icon(
-                    Icons.arrow_back_ios_rounded,
+                    Icons.arrow_back,
                     size: AppDimension().kTwentyScreenPixel,
                     color:
                         Theme.of(context).appBarTheme.actionsIconTheme!.color,

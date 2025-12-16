@@ -23,9 +23,15 @@ class CustomIconButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(
               AppDimension().kFortyScreenWidth,
             ),
-            child: Padding(
-              padding: AppDimension().kIconButtonPadding,
-              child: child,
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(
+                minWidth: 48,
+                minHeight: 48,
+              ),
+              child: Padding(
+                padding: AppDimension().kIconButtonPadding,
+                child: Center(child: child),
+              ),
             ),
           ),
         ),

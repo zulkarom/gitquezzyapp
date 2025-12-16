@@ -45,14 +45,10 @@ class _PackageListScreenState extends State<PackageListScreen> {
                 Center(
                   child: CustomIconButton(
                     onTap: () {
-                      Navigator.of(context).pushNamedAndRemoveUntil(
-                        "/package_selected",
-                        (route) => false,
-                        arguments: {"id": stdId},
-                      );
+                      Navigator.of(context).pop();
                     },
                     child: Icon(
-                      Icons.arrow_back_ios_rounded,
+                      Icons.arrow_back,
                       size: AppDimension().kTwentyScreenPixel,
                       color:
                           Theme.of(context).appBarTheme.actionsIconTheme!.color,

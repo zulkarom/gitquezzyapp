@@ -271,6 +271,7 @@ class _StudentListScreenState extends State<StudentListScreen> {
                                         context),
                                   );
                                 }
+                                return null;
                                 // } else {
                                 //   // Handle any additional items beyond the studentItem length
                                 //   return null;

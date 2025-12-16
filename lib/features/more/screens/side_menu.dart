@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quezzy_app/core/constant/colors.dart';
 import 'package:quezzy_app/core/constant/constants.dart';
 import 'package:quezzy_app/core/helper/text_scale.dart';
@@ -10,9 +9,7 @@ import 'package:quezzy_app/features/application/application_page.dart';
 import 'package:quezzy_app/features/application/bloc/app_bloc.dart';
 import 'package:quezzy_app/features/more/bloc/more_bloc.dart';
 import 'package:quezzy_app/features/quiz_room/screens/invitation_list_screen.dart';
-import 'package:quezzy_app/features/reusable/widgets/flutter_toast.dart';
 import 'package:quezzy_app/features/reusable/widgets/parent_password_field.dart';
-import 'package:quezzy_app/features/student/screens/forget_pin_confirmation.dart';
 import 'package:quezzy_app/features/student/screens/password_form.dart';
 import 'package:quezzy_app/global.dart';
 import 'package:quezzy_app/routes/routes.dart';

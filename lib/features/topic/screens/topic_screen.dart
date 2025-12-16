@@ -69,7 +69,7 @@ class _TopicScaffoldState extends State<_TopicScaffold> {
                           Navigator.of(context).pop();
                         },
                         child: Icon(
-                          Icons.arrow_back_ios_rounded,
+                          Icons.arrow_back,
                           size: AppDimension().kTwentyScreenPixel,
                           color: Theme.of(context)
                               .appBarTheme
@@ -83,6 +83,8 @@ class _TopicScaffoldState extends State<_TopicScaffold> {
                 BlocBuilder<TopicBloc, TopicState>(
                   builder: (context, state) {
                     if (state is DoneLoadingMyTopicStates) {
+                      final l10n = AppLocalizations.of(context);
+                      final topics = state.topicItem ?? const [];
                       return Padding(
                         padding:
                             EdgeInsets.all(AppDimension().kTwelveScreenWidth),
@@ -91,7 +93,7 @@ class _TopicScaffoldState extends State<_TopicScaffold> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              AppLocalizations.of(context)!.listTopic,
+                              l10n?.listTopic ?? '',
                               style: Theme.of(context)
                                   .textTheme
                                   .titleLarge!
@@ -100,9 +102,9 @@ class _TopicScaffoldState extends State<_TopicScaffold> {
                                     color: Theme.of(context).primaryColor,
                                   ),
                             ),
-                            state.topicItem!.isEmpty
+                            topics.isEmpty
                                 ? Text(
-                                    AppLocalizations.of(context)!.noResult,
+                                    l10n?.noResult ?? '',
                                     style: Theme.of(context)
                                         .textTheme
                                         .titleSmall!
@@ -117,10 +119,11 @@ class _TopicScaffoldState extends State<_TopicScaffold> {
                             SizedBox(
                               height: MediaQuery.of(context).size.height - 187,
                               child: ListView.builder(
-                                itemCount: state.topicItem!.length,
+                                itemCount: topics.length,
                                 shrinkWrap: true,
                                 // physics: const NeverScrollableScrollPhysics(),
                                 itemBuilder: (context, index) {
+                                  final topic = topics[index];
                                   return Padding(
                                     padding: const EdgeInsets.only(bottom: 10),
                                     child: GestureDetector(
@@ -131,7 +134,7 @@ class _TopicScaffoldState extends State<_TopicScaffold> {
                                             builder: (context) {
                                               return LevelScreen(
                                                   widget.subjectItem,
-                                                  state.topicItem![index]);
+                                                  topic);
                                             },
                                           ),
                                         );
@@ -141,19 +144,15 @@ class _TopicScaffoldState extends State<_TopicScaffold> {
                                           Expanded(
                                             child: TopicCard(
                                                 topicName: statelg.language.name == 'eng'
-                                                    ? state.topicItem![index]
-                                                            .name_eng ??
+                                                    ? topic.name_eng ??
                                                         ''
-                                                    : state.topicItem![index]
-                                                            .name_bm ??
+                                                    : topic.name_bm ??
                                                         '',
                                                 topicDesc: statelg.language.name ==
                                                         'eng'
-                                                    ? state.topicItem![index]
-                                                            .description_eng ??
+                                                    ? topic.description_eng ??
                                                         ''
-                                                    : state.topicItem![index]
-                                                            .description_bm ??
+                                                    : topic.description_bm ??
                                                         '',
                                                 image: Image.asset(
                                                   "assets/images/categories/png/English.png",
@@ -161,14 +160,10 @@ class _TopicScaffoldState extends State<_TopicScaffold> {
                                                       .kFortyEightScreenWidth,
                                                 ),
                                                 star: Global.starCalculation(
-                                                    state.topicItem![index]
-                                                            .progress! /
+                                                    (topic.progress ?? 0) /
                                                         100),
-                                                progress: context
-                                                    .read<TopicBloc>()
-                                                    .state
-                                                    .topicItem![index]
-                                                    .progress!
+                                                progress: topic.progress ??
+                                                    0
 
                                                 // state
                                                 //     .topicItem![index].progress!,

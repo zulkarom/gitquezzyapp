@@ -1,6 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quezzy_app/core/models/chat/msgcontent.dart';
 
 import 'chat_events.dart';
 import 'chat_states.dart';

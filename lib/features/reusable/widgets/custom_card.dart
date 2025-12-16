@@ -37,7 +37,7 @@ class CustomCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: AppDimension().kCardBorderRadius,
         ),
-        color: color ?? Theme.of(context).colorScheme.background,
+        color: color ?? Theme.of(context).colorScheme.surface,
         shadows: [
           BoxShadow(
             color: Theme.of(context).colorScheme.secondary.withOpacity(0.25),
